@@ -38,7 +38,7 @@ name="submit" value="Submit" />
 <?php
 
 try {
-    $conn = new PDO("sqlsrv:server = tcp:olezhkin.database.windows.net,1433; Database = PrimeOne", "Skaylans", "lgj231997");
+    $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = SkayOleg", "Skaylans", "Lgj231997");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 }
 catch (PDOException $e) {
