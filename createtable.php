@@ -1,3 +1,4 @@
+fewifhiweht
 <?
 try {
     $conn = new PDO("sqlsrv:server = tcp:olezhkin.database.windows.net,1433; Database = SkayOleg", "Skaylans", "Lgj231997");
