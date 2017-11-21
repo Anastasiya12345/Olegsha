@@ -76,8 +76,8 @@ try {
     $stmt = $conn->prepare($sql_insert);
     $stmt->bindValue(1, $name);
     $stmt->bindValue(2, $email);
-    $stmt->bindValue(4, $sex);
-    $stmt->bindValue(3, $date);
+    $stmt->bindValue(3, $sex);
+    $stmt->bindValue(4, $date);
     $stmt->execute();
 }
 catch(Exception $e) {
