@@ -10,6 +10,10 @@
         font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     }
     
+    #Sex {
+        
+    }
+    
     h1, h2, h3,{ 
         color: #000; 
         margin-bottom: 0; 
@@ -43,7 +47,7 @@ to register.</p>
 enctype="multipart/form-data" >
       Name  <input type="text" name="name" id="name"/></br>
       Email <input type="text" name="email" id="email"/></br>
-      <select><option>Выберите пол</option>
+      <select id="Sex"><option>Выберите пол</option>
         <option value="S1">Муж</option>
         <option value="S2">Жен</option>
       </select>
@@ -72,6 +76,7 @@ try {
     $stmt = $conn->prepare($sql_insert);
     $stmt->bindValue(1, $name);
     $stmt->bindValue(2, $email);
+    $stmt->bindValue(4, $sex);
     $stmt->bindValue(3, $date);
     $stmt->execute();
 }
@@ -88,10 +93,12 @@ if(count($registrants) > 0) {
     echo "<table>";
     echo "<tr><th>Name</th>";
     echo "<th>Email</th>";
+    echo "<th>Sex</th>";
     echo "<th>Date</th></tr>";
     foreach($registrants as $registrant) {
         echo "<tr><td>".$registrant['name']."</td>";
         echo "<td>".$registrant['email']."</td>";
+        echo "<td>".$registrant['sex']."</td>";
         echo "<td>".$registrant['date']."</td></tr>";
     }
     echo "</table>";
