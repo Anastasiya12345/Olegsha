@@ -71,13 +71,13 @@ try {
     $sex = $_POST['sex'];
     // Insert data
     $sql_insert = 
-"INSERT INTO registration_tbl (name, email, date) 
+"INSERT INTO registration_tbl (name, email, date, sex) 
                    VALUES (?,?,?)";
     $stmt = $conn->prepare($sql_insert);
     $stmt->bindValue(1, $name);
     $stmt->bindValue(2, $email);
-    $stmt->bindValue(3, $sex);
-    $stmt->bindValue(4, $date);
+    $stmt->bindValue(3, $date);
+    $stmt->bindValue(4, $sex);
     $stmt->execute();
 }
 catch(Exception $e) {
