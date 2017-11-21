@@ -30,7 +30,7 @@ to register.</p>
 enctype="multipart/form-data" >
       Name  <input type="text" name="name" id="name"/></br>
       Email <input type="text" name="email" id="email"/></br>
-      <select><option>Выберите из списка</option>
+      <select><option>Выберите пол</option>
         <option value="S1">Муж</option>
         <option value="S2">Жен</option>
       <input type="submit" name="submit" value="Submit" />
