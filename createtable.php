@@ -7,8 +7,8 @@ try {
     PRIMARY KEY(id),
     name VARCHAR(30),
     email VARCHAR(30),
-    sex VARCHAR(30),
-    date DATE)";
+    date DATE,
+    sex VARCHAR(30))";
     $conn->query($sql);
 }
 catch (PDOException $e) {
