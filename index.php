@@ -28,12 +28,12 @@ email address, then click <strong>Submit</strong>
 to register.</p>
 <form method="post" action="index.php" 
 enctype="multipart/form-data" >
-      Name  <input type="text" 
-name="name" id="name"/></br>
-      Email <input type="text" 
-name="email" id="email"/></br>
-      <input type="submit" 
-name="submit" value="Submit" />
+      Name  <input type="text" name="name" id="name"/></br>
+      Email <input type="text" name="email" id="email"/></br>
+      <p><select name="select" size="2" multiple>
+        <option selected value="S1">Муж</option>
+        <option value="S2">Жен</option>
+      <input type="submit" name="submit" value="Submit" />
 </form>
 <?php
 
@@ -50,6 +50,7 @@ try {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $date = date("Y-m-d");
+    $sex = $_POST['sex'];
     // Insert data
     $sql_insert = 
 "INSERT INTO registration_tbl (name, email, date) 
