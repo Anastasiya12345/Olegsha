@@ -93,13 +93,13 @@ if(count($registrants) > 0) {
     echo "<table>";
     echo "<tr><th>Name</th>";
     echo "<th>Email</th>";
-    echo "<th>Sex</th>";
-    echo "<th>Date</th></tr>";
+    echo "<th>Date</th>";
+    echo "<th>Sex</th></tr>";
     foreach($registrants as $registrant) {
         echo "<tr><td>".$registrant['name']."</td>";
         echo "<td>".$registrant['email']."</td>";
-        echo "<td>".$registrant['sex']."</td>";
-        echo "<td>".$registrant['date']."</td></tr>";
+        echo "<td>".$registrant['date']."</td>";
+        echo "<td>".$registrant['sex']."</td></tr>";
     }
     echo "</table>";
 } else {
