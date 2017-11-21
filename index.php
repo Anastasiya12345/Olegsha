@@ -30,10 +30,9 @@ to register.</p>
 enctype="multipart/form-data" >
       Name  <input type="text" name="name" id="name"/></br>
       Email <input type="text" name="email" id="email"/></br>
-      <p><select name="Sex">
+      <select><option>Выберите из списка</option>
         <option value="S1">Муж</option>
         <option value="S2">Жен</option>
-      <>    
       <input type="submit" name="submit" value="Submit" />
 </form>
 <?php
