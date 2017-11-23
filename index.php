@@ -57,12 +57,12 @@
       echo "<h2>People who are registered:</h2>";
       echo "<table>";
       echo "<tr><th>Name</th>";
-      echo "<th>Email</th>";
+      echo "<tr><th>Email</th>";
       echo "<th>Gender</th>";
       echo "<th>Date</th></tr>";
       foreach($registrants as $registrant) {
         echo "<tr><td>".$registrant['name']."</td>";
-        echo "<td>".$registrant['email']."</td>";
+        echo "<td><td>".$registrant['email']."</td>";
         echo "<td>".$registrant['gender']."</td>";
         echo "<td>".$registrant['date']."</td></tr>";
         }
