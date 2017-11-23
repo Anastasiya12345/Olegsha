@@ -13,7 +13,7 @@
       <div>
         <input type="text" id="name" placeholder="Ваше имя">
         <input type="email" id="email" placeholder="Email..">
-        <input type="button" id="send" class="btn" value="Отправить">
+        <input type="submit" id="send" class="btn" value="Отправить">
       </div>
       <div>
         <select id="email" class="gen">
