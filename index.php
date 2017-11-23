@@ -15,12 +15,12 @@ enctype="multipart/form-data" >
     <br>
       Email <input type="text" name="email" id="email"/>
     <br>
-      Sol <input type="select" name="gender" id="gender">
-    <br>
-      <select class="Gen"><option>Выберите пол</option>
+      <select name="gender" id="email">
+        <option>Выберите пол</option>
         <option value="S1">Муж</option>
         <option value="S2">Жен</option>
       </select>
+    <br>
       <input type="submit" name="submit" value="Submit" />
 </form>
 <?php
