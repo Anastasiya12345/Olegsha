@@ -11,9 +11,13 @@ email address, then click <strong>Submit</strong>
 to register.</p>
 <form method="post" action="index.php" 
 enctype="multipart/form-data" >
-      Name  <input type="text" name="name" id="name"/></br>
-      Email <input type="text" name="email" id="email"/></br>
-      <select class="Gender"><option>Выберите пол</option>
+      Name  <input type="text" name="name" id="name"/>
+    <br>
+      Email <input type="text" name="email" id="email"/>
+    <br>
+      Sol <input type="select" name="gender" id="gender">
+    <br>
+      <select class="Gen"><option>Выберите пол</option>
         <option value="S1">Муж</option>
         <option value="S2">Жен</option>
       </select>
