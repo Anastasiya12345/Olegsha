@@ -30,11 +30,11 @@ form .btn {
 }
 
 form .gen {
-  border-radius: 40px;
+  border-radius: 30px;
   border: 1px solid #c4c4c4;
   font-size: 0.8em;
   padding: 10px 5%;
   margin-bottom: 10px;
   background-color: white;
-  width: 40%;
+  width: 50%;
 }
