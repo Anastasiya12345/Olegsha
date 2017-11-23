@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Registration Form</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/form.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/form.css">
   </head>
   <body>
     <h1>Register here!</h1>
