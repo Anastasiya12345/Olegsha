@@ -1,6 +1,5 @@
 <html>
   <head>
-    <meta charset="utf-8">
     <title>Registration Form</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/form.css">
@@ -10,8 +9,8 @@
     <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
     <form method="post" action="index.php" enctype="multipart/form-data">
       <div>
-        <input type="text" id="name" placeholder="Ваше имя">
-        <input type="email" id="email" placeholder="Email..">
+        <input type="text" name="name" id="name" placeholder="Ваше имя">
+        <input type="text" name="email" id="email" placeholder="Email..">
         <input type="submit" name="submit" class="btn" value="Отправить">
       </div>
       <div>
