@@ -1,12 +1,12 @@
 form {
   float: left;
-  width: 25%;
+  width: 50%;
   margin-top: 10px;
 }
 
 form>div {
   float: left;
-  width: 03%;
+  width: 30%;
 }
 
 form>div>input {
