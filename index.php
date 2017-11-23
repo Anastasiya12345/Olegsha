@@ -13,7 +13,7 @@ to register.</p>
 enctype="multipart/form-data" >
       Name  <input type="text" name="name" id="name"/></br>
       Email <input type="text" name="email" id="email"/></br>
-      <select id="Sex"><option>Выберите пол</option>
+      <select class="Gender"><option>Выберите пол</option>
         <option value="S1">Муж</option>
         <option value="S2">Жен</option>
       </select>
@@ -33,15 +33,17 @@ if(!empty($_POST)) {
 try {
     $name = $_POST['name'];
     $email = $_POST['email'];
+    $gender = $_POST['gender'];
     $date = date("Y-m-d");
     // Insert data
     $sql_insert = 
-"INSERT INTO registration_tbl (name, email, date) 
-                   VALUES (?,?,?)";
+"INSERT INTO registration_tbl (name, email, gender, date) 
+                   VALUES (?,?,?,?)";
     $stmt = $conn->prepare($sql_insert);
     $stmt->bindValue(1, $name);
     $stmt->bindValue(2, $email);
-    $stmt->bindValue(3, $date);
+    $stmt->bindValue(3, $gender);
+    $stmt->bindValue(4, $date);
     $stmt->execute();
 }
 catch(Exception $e) {
@@ -57,10 +59,12 @@ if(count($registrants) > 0) {
     echo "<table>";
     echo "<tr><th>Name</th>";
     echo "<th>Email</th>";
+    echo "<th>Gender</th>";
     echo "<th>Date</th></tr>";
     foreach($registrants as $registrant) {
         echo "<tr><td>".$registrant['name']."</td>";
         echo "<td>".$registrant['email']."</td>";
+        echo "<td>".$registrant['gender']."</td>";
         echo "<td>".$registrant['date']."</td></tr>";
     }
     echo "</table>";
