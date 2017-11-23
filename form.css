@@ -1,0 +1,40 @@
+form {
+  float: left;
+  width: 50%;
+  margin-top: 10px;
+}
+
+form>div {
+  float: left;
+  width: 50%;
+}
+
+form>div>input {
+  border-radius: 50px;
+  border: 1px solid #c4c4c4;
+  font-size: 0.8em;
+  padding: 10px 5%;
+  margin-bottom: 10px;
+  background-color: white;
+  width: 75%;
+}
+
+form .btn {
+  border-radius: 0;
+  border: 1px solid #c4c4c4;
+  font-size: 0.8em;
+  padding: 5px;
+  margin-bottom: 0;
+  background-color: white;
+  width: 50%;
+}
+
+form .gen {
+  border-radius: 50px;
+  border: 1px solid #c4c4c4;
+  font-size: 0.8em;
+  padding: 10px 5%;
+  margin-bottom: 10px;
+  background-color: white;
+  width: 75%;
+}
