@@ -34,16 +34,14 @@ try {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $date = date("Y-m-d");
-    $sex = $_POST['sex'];
     // Insert data
     $sql_insert = 
-"INSERT INTO registration_tbl (name, email, date, sex) 
+"INSERT INTO registration_tbl (name, email, date) 
                    VALUES (?,?,?)";
     $stmt = $conn->prepare($sql_insert);
     $stmt->bindValue(1, $name);
     $stmt->bindValue(2, $email);
     $stmt->bindValue(3, $date);
-    $stmt->bindValue(4, $sex);
     $stmt->execute();
 }
 catch(Exception $e) {
@@ -59,13 +57,11 @@ if(count($registrants) > 0) {
     echo "<table>";
     echo "<tr><th>Name</th>";
     echo "<th>Email</th>";
-    echo "<th>Date</th>";
-    echo "<th>Sex</th></tr>";
+    echo "<th>Date</th></tr>";
     foreach($registrants as $registrant) {
         echo "<tr><td>".$registrant['name']."</td>";
         echo "<td>".$registrant['email']."</td>";
-        echo "<td>".$registrant['date']."</td>";
-        echo "<td>".$registrant['sex']."</td></tr>";
+        echo "<td>".$registrant['date']."</td></tr>";
     }
     echo "</table>";
 } else {
