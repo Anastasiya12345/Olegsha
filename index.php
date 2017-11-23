@@ -8,7 +8,7 @@
   <body>
     <h1>Register here!</h1>
     <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
-    <form>
+    <form method="post" action="index.php" enctype="multipart/form-data">
       <div>
         <input type="text" id="name" placeholder="Ваше имя">
         <input type="email" id="email" placeholder="Email..">
