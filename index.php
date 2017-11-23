@@ -1,80 +1,75 @@
+<!DOCTYPE html>
 <html>
-<head>
+  <head>
     <meta charset="utf-8">
-<Title>Registration Form</Title>
-    <link rel="stylesheet" href="/style.css">
-</head>
-<body>
-<h1>Register here!</h1>
-<p>Fill in your name and 
-email address, then click <strong>Submit</strong> 
-to register.</p>
-<form method="post" action="index.php" 
-enctype="multipart/form-data" >
-      Name  <input type="text" name="name" id="name"/>
-    <br>
-      Email <input type="text" name="email" id="email"/>
-    <br>
-      <select name="gender" id="email">
-        <option>Выберите пол</option>
-        <option value="S1">Муж</option>
-        <option value="S2">Жен</option>
-      </select>
-    <br>
-      <input type="submit" name="submit" value="Submit" />
-</form>
-<?php
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/form.css">
+  </head>
+  <body>
+    <h1>Register here!</h1>
+    <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
+    <form>
+      <div>
+        <input type="text" id="name" placeholder="Ваше имя">
+        <input type="email" id="email" placeholder="Email..">
+        <input type="button" id="send" class="btn" value="Отправить">
+      </div>
+      <div>
+        <select name="gender" id="email" class="gen">
+          <option>Выберите пол</option>
+          <option value="S1">Муж</option>
+          <option value="S2">Жен</option>
+        </select>
+      </div>
+    </form>
 
-try {
-    $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-}
-catch (PDOException $e) {
-    print("Error connecting to SQL Server.");
-    die(print_r($e));
-}
-if(!empty($_POST)) {
-try {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $gender = $_POST['gender'];
-    $date = date("Y-m-d");
-    // Insert data
-    $sql_insert = 
-"INSERT INTO registration_tbl (name, email, gender, date) 
-                   VALUES (?,?,?,?)";
-    $stmt = $conn->prepare($sql_insert);
-    $stmt->bindValue(1, $name);
-    $stmt->bindValue(2, $email);
-    $stmt->bindValue(3, $gender);
-    $stmt->bindValue(4, $date);
-    $stmt->execute();
-}
-catch(Exception $e) {
-    die(var_dump($e));
-}
-echo "<h3>Your're registered!</h3>";
-}
-$sql_select = "SELECT * FROM registration_tbl";
-$stmt = $conn->query($sql_select);
-$registrants = $stmt->fetchAll(); 
-if(count($registrants) > 0) {
-    echo "<h2>People who are registered:</h2>";
-    echo "<table>";
-    echo "<tr><th>Name</th>";
-    echo "<th>Email</th>";
-    echo "<th>Gender</th>";
-    echo "<th>Date</th></tr>";
-    foreach($registrants as $registrant) {
+    <?php
+    try {
+      $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+    catch (PDOException $e) {
+      print("Error connecting to SQL Server.");
+      die(print_r($e));
+    }
+    if(!empty($_POST)) {
+    try {
+      $name = $_POST['name'];
+      $email = $_POST['email'];
+      $date = date("Y-m-d");
+        // Insert data
+      $sql_insert = "INSERT INTO registration_tbl (name, email, gender, date) VALUES (?,?,?)";
+      $stmt = $conn->prepare($sql_insert);
+      $stmt->bindValue(1, $name);
+      $stmt->bindValue(2, $email);
+      $stmt->bindValue(3, $date);
+      $stmt->execute();
+    }
+    catch(Exception $e) {
+      die(var_dump($e));
+    }
+    echo "<h3>Your're registered!</h3>";
+    }
+    $sql_select = "SELECT * FROM registration_tbl";
+    $stmt = $conn->query($sql_select);
+    $registrants = $stmt->fetchAll();
+    if(count($registrants) > 0) {
+      echo "<h2>People who are registered:</h2>";
+      echo "<table>";
+      echo "<tr><th>Name</th>";
+      echo "<th>Email</th>";
+      echo "<th>Date</th></tr>";
+      foreach($registrants as $registrant) {
         echo "<tr><td>".$registrant['name']."</td>";
         echo "<td>".$registrant['email']."</td>";
-        echo "<td>".$registrant['gender']."</td>";
         echo "<td>".$registrant['date']."</td></tr>";
+        }
+        echo "</table>";
+    } else {
+      echo "<h3>No one is currently registered.</h3>";
     }
-    echo "</table>";
-} else {
-    echo "<h3>No one is currently registered.</h3>";
-}
-?>
-</body>
+    ?>
+
+  </body>
 </html>
