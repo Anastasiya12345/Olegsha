@@ -16,7 +16,7 @@
         <input type="button" id="send" class="btn" value="Отправить">
       </div>
       <div>
-        <select name="gender" id="email" class="gen">
+        <select id="email" class="gen">
           <option>Выберите пол</option>
           <option value="S1">Муж</option>
           <option value="S2">Жен</option>
@@ -39,7 +39,7 @@
       $email = $_POST['email'];
       $date = date("Y-m-d");
         // Insert data
-      $sql_insert = "INSERT INTO registration_tbl (name, email, gender, date) VALUES (?,?,?)";
+      $sql_insert = "INSERT INTO registration_tbl (name, email, date) VALUES (?,?,?)";
       $stmt = $conn->prepare($sql_insert);
       $stmt->bindValue(1, $name);
       $stmt->bindValue(2, $email);
