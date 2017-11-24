@@ -33,9 +33,9 @@
       $name = $_POST['name'];
       $email = $_POST['email'];
       $date = date("Y-m-d");
-      $gender = $_POST['gen'];
+      $gender = $_POST['gender'];
         // Insert data
-      $sql_insert ="INSERT INTO registration_tbl (name, email, date, gender) VALUES (?,?,?,?)";
+      $sql_insert ="INSERT INTO registration_tbl (name, email, date, gen) VALUES (?,?,?,?)";
       $stmt = $conn->prepare($sql_insert);
       $stmt->bindValue(1, $name);
       $stmt->bindValue(2, $email);
