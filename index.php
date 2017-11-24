@@ -12,7 +12,7 @@
         <input type="text" name="name" id="name" placeholder="Введите ваше имя">
         <input type="text" name="email" id="email" placeholder="Ваш еmail..">
         <input type="submit" name="submit" class="btn" value="Отправить">
-        <input type="submit" name="it" class="btn" value="Отчистить">
+        <input type="submit" name="clear" class="btn" value="Очистить">
       </div>
       <div>
         <select name="gender" id="gender" class="gen">
@@ -72,13 +72,12 @@
     } else {
       echo "<h3>No one is currently registered.</h3>";
     }
-    ?>
-
-    try {
+    
+     try {
       $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       
-      if(isset($_POST['it'])) {
+      if(isset($_POST['clear'])) {
       $sql1 = "DELETE FROM registration_tbl1";
       $conn->query($sql1);
     }
@@ -87,6 +86,10 @@
       print("Error connecting to SQL Server.");
       die(print_r($e));
     }
+    
+    ?>
+
+   
     
   </body>
 </html>
