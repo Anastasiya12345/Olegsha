@@ -29,7 +29,7 @@ form .btn {
   width: 50%;
 }
 
-form .cl {
+.cl {
   float: right;
   border-radius: 0;
   border: 1px solid #c4c4c4;
