@@ -15,7 +15,10 @@
         
       </div>
       <div>
-        <input type="text" name="gender" id="gender" placeholder="Ваш пол..">
+        <select class="gen">
+          <option>Выбирите ваш пол</option>
+          <option value="S1">Man</option>
+          <option value="S2">Woman</option>
       </div>
     </form>
 
