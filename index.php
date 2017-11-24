@@ -14,9 +14,9 @@
         <input type="submit" name="submit" class="btn" value="Отправить">
       </div>
       <div>
-        <select name="gender" id="gender" class="gen">
+        <select  id="gender" class="gen">
           <option>Выберите пол</option>
-          <option value="S1">Муж</option>
+          <option value="S1" name = "gender">Муж</option>
           <option value="S2">Жен</option>
         </select>
       </div>
