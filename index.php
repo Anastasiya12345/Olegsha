@@ -17,8 +17,8 @@
       <div>
         <select name="gender" id="gender" class="gen">
           <option>Выбирите ваш пол</option>
-          <option value="S1">Man</option>
-          <option value="S2">Woman</option>
+          <option value="Man">Man</option>
+          <option value="Woman">Woman</option>
         </select>
       </div>
     </form>
