@@ -21,7 +21,7 @@
           <option value="Woman">Woman</option>
         </select>
       </div>
-    
+    </form>
 
     <?php
     try {
@@ -88,8 +88,6 @@
     }
     
     ?>
-</form>
-   
-    
+
   </body>
 </html>
