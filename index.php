@@ -12,10 +12,7 @@
         <input type="text" name="name" id="name" placeholder="Введите ваше имя">
         <input type="text" name="email" id="email" placeholder="Ваш еmail..">
         <input type="submit" name="submit" class="btn" value="Отправить">
-      </div>
-      <div>
         <input type="text" name="gender" id="gender" placeholder="Ваш пол..">
-    
       </div>
     </form>
 
@@ -35,7 +32,7 @@
       $gender = $_POST['gender'];
       $date = date("Y-m-d");
         // Insert data
-      $sql_insert ="INSERT INTO registration_tbl (name, email,date) VALUES (?,?,?)";
+      $sql_insert ="INSERT INTO registration_tbl (name, email, gender, date) VALUES (?,?,?,?)";
       $stmt = $conn->prepare($sql_insert);
       $stmt->bindValue(1, $name);
       $stmt->bindValue(2, $email);
