@@ -19,6 +19,7 @@
           <option>Выбирите ваш пол</option>
           <option value="S1">Man</option>
           <option value="S2">Woman</option>
+        </select>
       </div>
     </form>
 
