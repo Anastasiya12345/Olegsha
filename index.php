@@ -14,7 +14,7 @@
         <input type="submit" name="submit" class="btn" value="Отправить">
       </div>
       <div>
-        <select name="gender" id="email" class="gen">
+        <select name="gender" id="gender" class="gen">
           <option>Выберите пол</option>
           <option value="S1">Муж</option>
           <option value="S2">Жен</option>
@@ -38,11 +38,12 @@
       $gender = $_POST['gender'];
       $date = date("Y-m-d");
         // Insert data
-      $sql_insert ="INSERT INTO registration_tbl (name, email, date) VALUES (?,?,?)";
+      $sql_insert ="INSERT INTO registration_tbl (name, email, gender, date) VALUES (?,?,?,?)";
       $stmt = $conn->prepare($sql_insert);
       $stmt->bindValue(1, $name);
       $stmt->bindValue(2, $email);
-      $stmt->bindValue(3, $date);
+      $stmt->bindValue(3, $gender);
+      $stmt->bindValue(4, $date);
       $stmt->execute();
     }
     catch(Exception $e) {
