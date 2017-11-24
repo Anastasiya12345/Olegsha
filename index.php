@@ -35,7 +35,7 @@
       $date = date("Y-m-d");
       $gender = $_POST['gender'];
         // Insert data
-      $sql_insert ="INSERT INTO registration_tbl (name, email, date, gender) VALUES (?,?,?,?)";
+      $sql_insert ="INSERT INTO registration_tbl1 (name, email, date, gender) VALUES (?,?,?,?)";
       $stmt = $conn->prepare($sql_insert);
       $stmt->bindValue(1, $name);
       $stmt->bindValue(2, $email);
@@ -48,7 +48,7 @@
     }
     echo "<h3>Your're registered!</h3>";
     }
-    $sql_select = "SELECT * FROM registration_tbl";
+    $sql_select = "SELECT * FROM registration_tbl1";
     $stmt = $conn->query($sql_select);
     $registrants = $stmt->fetchAll();
     if(count($registrants) > 0) {
