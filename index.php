@@ -23,21 +23,21 @@
           <option value="Woman">Woman</option>
         </select>
       </div>
-      <?php
-      try {
+     <?php
+  try {
       $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-      
+
       if(isset($_POST["clear"])) {
       $sql1 = "DELETE FROM registration_tb";
       $conn->query($sql1);
-    }
-    }
-    catch (PDOException $e) {
-      print("Error connecting to SQL Server.");
-      die(print_r($e));
-    }
-      ?>
+      }
+  }
+  catch (PDOException $e) {
+    print("Error connecting to SQL Server.");
+    die(print_r($e));
+  }
+?>
     </form>
 
     <?php
