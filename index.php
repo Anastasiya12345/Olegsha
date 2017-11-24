@@ -12,9 +12,8 @@
         <input type="text" name="name" id="name" placeholder="Введите ваше имя">
         <input type="text" name="email" id="email" placeholder="Ваш еmail..">
         <input type="submit" name="submit" class="btn" value="Отправить">
-        <br>
-        <input type="submit" name="clear" class="btn" value="Очистить">
       </div>
+      <input type="submit" name="clear" class="btn" value="Очистить">
       <div>
         <select name="gender" id="gender" class="gen">
           <option>Выбирите ваш пол</option>
