@@ -13,7 +13,6 @@
         <input type="text" name="email" id="email" placeholder="Ваш еmail..">
         <input type="submit" name="submit" class="btn" value="Отправить">
         <br>
-        <br>
         <input type="submit" name="clear" class="btn" value="Очистить">
       </div>
       <div>
