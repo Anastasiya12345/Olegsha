@@ -15,10 +15,10 @@
         
       </div>
       <div>
-        <select  id="gender" class="gen">
+        <select name="gender" id="gender" class="gen">
           <option>Выбирите ваш пол</option>
-          <option value="S1"name="gender">Man</option>
-          <option value="S2"name="gender">Woman</option>
+          <option value="S1">Man</option>
+          <option value="S2">Woman</option>
         </select>
       </div>
     </form>
