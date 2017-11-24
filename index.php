@@ -12,6 +12,9 @@
         <input type="text" name="name" id="name" placeholder="Введите ваше имя">
         <input type="text" name="email" id="email" placeholder="Ваш еmail..">
         <input type="submit" name="submit" class="btn" value="Отправить">
+        
+      </div>
+      <div>
         <input type="text" name="gender" id="gender" placeholder="Ваш пол..">
       </div>
     </form>
