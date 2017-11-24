@@ -13,6 +13,7 @@
         <input type="text" name="email" id="email" placeholder="Ваш еmail..">
         <input type="submit" name="submit" class="btn" value="Отправить">
         <br>
+        <br>
         <input type="submit" name="clear" class="btn" value="Очистить">
       </div>
       <div>
@@ -78,7 +79,7 @@
       $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       
-      if(isset($_POST['clear'])) {
+      if(isset($_POST["clear"])) {
       $sql1 = "DELETE FROM registration_tb";
       $conn->query($sql1);
     }
