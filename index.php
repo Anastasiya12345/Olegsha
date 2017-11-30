@@ -95,18 +95,7 @@
                   .'<td>'.$registrant['data'].'</td>';
         }
 
-        if(isset($_POST['filter']) {
-          $sql_select = $con->prepare('SELECT * FROM registration_tb WHERE gender like :gender');
-          $sql_select->execute(array(':gender'=>$gender.'%'));
-          $registrants = $stmt->fetchAll()
-          foreach($registrants as $registrant) {
-            $tableContent = $tableContent.'<tr>'.
-                    '<td>'.$registrant['name'].'</td>'
-                    .'<td>'.$registrant['email'].'</td>'
-                    .'<td>'.$registrant['gender'].'</td>'
-                    .'<td>'.$registrant['data'].'</td>';
-            }
-      }
+        
       ?>
   </body>
 </html>
