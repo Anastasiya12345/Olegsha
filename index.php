@@ -1,5 +1,33 @@
+<?php
+
+if(isset($_POST['filter'])) {
+  $sql_insert ="SELECT * FROM registration_tb LIKE '%".$gender."%'";
+  $stmt = $conn->query($sql_select);
+  $registrants = $stmt->fetchAll();
+  if(count($registrants) > 0) {
+    echo "<h2>Люди, которые зарегистрированы:</h2>";
+    echo "<table>";
+    echo "<tr><th>Name</th>";
+    echo "<th>Email</th>";
+    echo "<th>Gender</th>";
+    echo "<th>Date</th></tr>";
+    foreach($registrants as $registrant) {
+      echo "<tr><td>".$registrant['name']."</td>";
+      echo "<td>".$registrant['email']."</td>";
+      echo "<td>".$registrant['gender']."</td>";
+      echo "<td>".$registrant['date']."</td></tr>";
+    }
+    echo "</table>";
+  } 
+  else {
+    echo "<h3>В настоящее время никто не зарегистрирован.</h3>";
+  }
+  
+?>
+<!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Регистрационная форма</title>
     <link rel ="stylesheet" href ="/style.css">
     <link rel ="stylesheet" href ="/form.css">
@@ -70,30 +98,6 @@
       }
       echo "<h3>Вы зарегистрировались!</h3>";
     }
-    if(isset($_POST['filter'])) {
-      $sql_insert ="SELECT * FROM registration_tb LIKE '%".$gender."%'";
-      $stmt = $conn->query($sql_select);
-      $registrants = $stmt->fetchAll();
-      if(count($registrants) > 0) {
-        echo "<h2>Люди, которые зарегистрированы:</h2>";
-        echo "<table>";
-        echo "<tr><th>Name</th>";
-        echo "<th>Email</th>";
-        echo "<th>Gender</th>";
-        echo "<th>Date</th></tr>";
-        foreach($registrants as $registrant) {
-          echo "<tr><td>".$registrant['name']."</td>";
-          echo "<td>".$registrant['email']."</td>";
-          echo "<td>".$registrant['gender']."</td>";
-          echo "<td>".$registrant['date']."</td></tr>";
-        }
-        echo "</table>";
-      } 
-      else {
-        echo "<h3>В настоящее время никто не зарегистрирован.</h3>";
-      }
-    }
-    else {
       $sql_select  = "SELECT * FROM registration_tb";
       $stmt = $conn->query($sql_select);
       $registrants = $stmt->fetchAll();
@@ -115,7 +119,6 @@
       else {
         echo "<h3>В настоящее время никто не зарегистрирован.</h3>";
       }
-    }
    
     
     ?>
