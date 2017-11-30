@@ -21,8 +21,8 @@
       <div>
         <select name ="gender" id ="gender" class ="gen">
           <option value ="">All</option>
-          <option value ="Man" <?php if($start == 'Man'){echo 'selected';}?>>Man</option>
-          <option value ="Woman" <?php if($start == 'Woman'){echo 'selected';}?>>Woman</option>
+          <option value ="Man" <?php if($gender == 'Man'){echo 'selected';}?>>Man</option>
+          <option value ="Woman" <?php if($gender == 'Woman'){echo 'selected';}?>>Woman</option>
         </select>
         <br>
         <input type ="submit" name ="filter" class ="btn" value ="Фильтр">
@@ -90,7 +90,25 @@
           echo "<td>".$registrant['date']."</td></tr>";
         }
 
-
+        if(isset($_POST['filter']) {
+          $gender = $_POST['gender'];
+          $sql_select = $con->prepare('SELECT * FROM registration_tb WHERE gender like :gender');
+          $sql_select->execute(array(':gender'=>$gender.'%'));
+          $registrants = $stmt->fetchAll()
+          if(count($registrants) > 0) {
+            echo "<h2>Люди, которые зарегистрированы:</h2>";
+            echo "<table>";
+            echo "<tr><th>Name</th>";
+            echo "<th>Email</th>";
+            echo "<th>Gender</th>";
+            echo "<th>Date</th></tr>";
+            foreach($registrants as $registrant) {
+              echo "<tr><td>".$registrant['name']."</td>";
+              echo "<td>".$registrant['email']."</td>";
+              echo "<td>".$registrant['gender']."</td>";
+              echo "<td>".$registrant['date']."</td></tr>";
+            }
+        }
         echo "</table>";
       }
       else {
