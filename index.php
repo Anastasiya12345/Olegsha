@@ -47,13 +47,7 @@
     <br><br>
  
     <div>
-      <select name="gens" id="gens" class="gen">
-          <option>Выбирите ваш пол</option>
-          <option value="Man">Man</option>
-          <option value="Woman">Woman</option>
-        </select>
-      <br><br>
-      <input type="submit" name="filterBtn" class="btn" value="Фильтр">
+      <input type="submit" name="filter" class="btn" value="Фильтр">
     </div>
     
     <?php
