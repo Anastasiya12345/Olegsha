@@ -29,7 +29,7 @@
       </div>
       <?php
       try {
-        $conn = new PDO("mysql:host=localhost; Database = Prime", "root", null);
+        $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         if(isset($_POST["clear"])) {
           $sql1 = "DELETE FROM registration_tb";
@@ -44,7 +44,7 @@
     </form>
     <?php
     try {
-      $conn = new PDO("mysql:host=localhost; Database = Prime", "root", null);
+      $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     catch (PDOException $e) {
