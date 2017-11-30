@@ -1,29 +1,3 @@
-<?php
-
-if(isset($_POST['filter'])) {
-  $sql_insert ="SELECT * FROM registration_tb LIKE '%".$gender."%'";
-  $stmt = $conn->query($sql_select);
-  $registrants = $stmt->fetchAll();
-  if(count($registrants) > 0) {
-    echo "<h2>Люди, которые зарегистрированы:</h2>";
-    echo "<table>";
-    echo "<tr><th>Name</th>";
-    echo "<th>Email</th>";
-    echo "<th>Gender</th>";
-    echo "<th>Date</th></tr>";
-    foreach($registrants as $registrant) {
-      echo "<tr><td>".$registrant['name']."</td>";
-      echo "<td>".$registrant['email']."</td>";
-      echo "<td>".$registrant['gender']."</td>";
-      echo "<td>".$registrant['date']."</td></tr>";
-    }
-    echo "</table>";
-  } 
-  else {
-    echo "<h3>В настоящее время никто не зарегистрирован.</h3>";
-  }
-  
-?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -45,13 +19,14 @@ if(isset($_POST['filter'])) {
       </div>
       <div>
         <select name ="gender" id ="gender" class ="gen">
-          <option>Выбирите ваш пол</option>
-          <option value ="Man">Man</option>
-          <option value ="Woman">Woman</option>
+          <option value ="">All</option>
+          <option value ="Man" <?php if($start == 'man'){echo 'selected';}?>>>Man</option>
+          <option value ="Woman" <?php if($start == 'woman'){echo 'selected';}?>>Woman</option>
         </select>
-        <input type ="submit" name ="filter" class ="btn" value="Фильтр">
+        <br>
+        <input type ="submit" name ="filter" class ="btn" value ="Фильтр">
       </div>
-      
+
       <?php
       try {
         $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
@@ -71,7 +46,7 @@ if(isset($_POST['filter'])) {
     <?php
     try {
       $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
-      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     catch (PDOException $e) {
       print("Ошибка подключения к SQL Server.");
@@ -83,7 +58,7 @@ if(isset($_POST['filter'])) {
         $email  = $_POST['email'];
         $date   = date("Y-m-d");
         $gender = $_POST['gender'];
-        
+
         // Insert data
         $sql_insert ="INSERT INTO registration_tb (name, email, date, gender) VALUES (?,?,?,?)";
         $stmt = $conn->prepare($sql_insert);
@@ -98,6 +73,7 @@ if(isset($_POST['filter'])) {
       }
       echo "<h3>Вы зарегистрировались!</h3>";
     }
+
       $sql_select  = "SELECT * FROM registration_tb";
       $stmt = $conn->query($sql_select);
       $registrants = $stmt->fetchAll();
@@ -114,14 +90,34 @@ if(isset($_POST['filter'])) {
           echo "<td>".$registrant['gender']."</td>";
           echo "<td>".$registrant['date']."</td></tr>";
         }
+
+        if(isset($_POST['filter']))
+        {
+        $start = $_POST['gender'];
+        $sql_select = $con->prepare('SELECT * FROM registration_tb WHERE gender like :start');
+        $stmt = $conn->query($sql_select);
+        $sql_select->execute(array(
+
+                 ':start'=>$start.'%'
+
+        ));
+        $registrants = $stmt->fetchAll();
+
+        foreach($registrants as $registrant) {
+          echo "<tr><td>".$registrant['name']."</td>";
+          echo "<td>".$registrant['email']."</td>";
+          echo "<td>".$registrant['gender']."</td>";
+          echo "<td>".$registrant['date']."</td></tr>";
+        }
+
         echo "</table>";
-      } 
+      }
       else {
         echo "<h3>В настоящее время никто не зарегистрирован.</h3>";
       }
-   
-    
+
+
     ?>
-    
+
   </body>
 </html>
