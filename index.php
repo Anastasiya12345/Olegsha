@@ -54,20 +54,8 @@
         $name   = $_POST['name'];
         $email  = $_POST['email'];
         $date   = date("Y-m-d");
-
-        if(isset($_POST['filter'])) {
-          $gender = $_POST['gender'];
-          $sql_insert ="SELECT * FROM registration_tb LIKE '%".$gender."%'";
-          $stmt = $conn->prepare($sql_insert);
-          $stmt->bindValue(1, $name);
-          $stmt->bindValue(2, $email);
-          $stmt->bindValue(3, $date);
-          $stmt->bindValue(4, $gender);
-          $stmt->execute();
-        }
-        else {
-          $gender = $_POST['gender'];
-        }
+        $gender = $_POST['gender'];
+        
         // Insert data
         $sql_insert ="INSERT INTO registration_tb (name, email, date, gender) VALUES (?,?,?,?)";
         $stmt = $conn->prepare($sql_insert);
@@ -82,27 +70,35 @@
       }
       echo "<h3>Вы зарегистрировались!</h3>";
     }
-    $sql_select  = "SELECT * FROM registration_tb";
-    $stmt        = $conn->query($sql_select);
-    $registrants = $stmt->fetchAll();
-    if(count($registrants) > 0) {
-      echo "<h2>Люди, которые зарегистрированы:</h2>";
-      echo "<table>";
-      echo "<tr><th>Name</th>";
-      echo "<th>Email</th>";
-      echo "<th>Gender</th>";
-      echo "<th>Date</th></tr>";
-      foreach($registrants as $registrant) {
-        echo "<tr><td>".$registrant['name']."</td>";
-        echo "<td>".$registrant['email']."</td>";
-        echo "<td>".$registrant['gender']."</td>";
-        echo "<td>".$registrant['date']."</td></tr>";
-      }
-      echo "</table>";
-    } 
-    else {
-      echo "<h3>В настоящее время никто не зарегистрирован.</h3>";
+    if(isset($_POST['filter'])) {
+      $sql_insert ="SELECT * FROM registration_tb LIKE '%".$gender."%'";
+      $stmt = $conn->query($sql_select);
+      $registrants = $stmt->fetchAll();
     }
+    else {
+      $sql_select  = "SELECT * FROM registration_tb";
+      $stmt = $conn->query($sql_select);
+      $registrants = $stmt->fetchAll();
+      if(count($registrants) > 0) {
+        echo "<h2>Люди, которые зарегистрированы:</h2>";
+        echo "<table>";
+        echo "<tr><th>Name</th>";
+        echo "<th>Email</th>";
+        echo "<th>Gender</th>";
+        echo "<th>Date</th></tr>";
+        foreach($registrants as $registrant) {
+          echo "<tr><td>".$registrant['name']."</td>";
+          echo "<td>".$registrant['email']."</td>";
+          echo "<td>".$registrant['gender']."</td>";
+          echo "<td>".$registrant['date']."</td></tr>";
+        }
+        echo "</table>";
+      } 
+      else {
+        echo "<h3>В настоящее время никто не зарегистрирован.</h3>";
+      }
+    }
+   
     
     ?>
     
