@@ -90,7 +90,13 @@
           echo "<td>".$registrant['date']."</td></tr>";
         }
         
-          if else (isset($_POST['filter']) {
+        echo "</table>";
+      }
+      else {
+        echo "<h3>В настоящее время никто не зарегистрирован.</h3>";
+      }
+    
+     if (isset($_POST['filter']) {
           $sql_select = "SELECT * FROM registration_tb LIKE '%".$gender."%'";
           $stmt = $conn->query($sql_select);
           $registrants = $stmt->fetchAll();
@@ -108,12 +114,7 @@
               echo "<td>".$registrant['date']."</td></tr>";
             }
         }
-        
-        echo "</table>";
-      }
-      else {
-        echo "<h3>В настоящее время никто не зарегистрирован.</h3>";
-      }
+    
       ?>
   </body>
 </html>
