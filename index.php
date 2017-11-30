@@ -57,7 +57,7 @@
 
         if(isset($_POST['filter'])) {
           $gender = $_POST['gender'];
-          $sql_insert ="INSERT INTO registration_tb (name, email, date, gender) VALUES (?,?,?,?)";
+          $sql_insert ="SELECT * FROM registration_tb LIKE '%".$gender."%'";
           $stmt = $conn->prepare($sql_insert);
           $stmt->bindValue(1, $name);
           $stmt->bindValue(2, $email);
