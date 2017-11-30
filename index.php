@@ -39,7 +39,7 @@
     print("Error connecting to SQL Server.");
     die(print_r($e));
   }
-      include_once "filter.php";
+     
 ?>
       
       
@@ -48,6 +48,7 @@
 
     <?php
     try {
+      include_once "filter.php";
       $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
