@@ -96,7 +96,6 @@
         }
 
         if(isset($_POST['filter']) {
-          $gender = $_POST['gender'];
           $sql_select = $con->prepare('SELECT * FROM registration_tb WHERE gender like :gender');
           $sql_select->execute(array(':gender'=>$gender.'%'));
           $registrants = $stmt->fetchAll()
