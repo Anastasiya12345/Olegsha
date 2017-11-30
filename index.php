@@ -38,8 +38,9 @@
     print("Error connecting to SQL Server.");
     die(print_r($e));
   }
-?>
       include_once "filter.php";
+?>
+      
       
     </form>
     
