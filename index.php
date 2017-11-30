@@ -59,27 +59,8 @@
         $name   = $_POST['name'];
         $email  = $_POST['email'];
         $date   = date("Y-m-d");
-                if (isset($_POST['filter']) {
-                          $gender = $_POST['gender'];
-          $sql_select = "SELECT * FROM registration_tb LIKE '%".$gender."%'";
-          $stmt = $conn->query($sql_select);
-          $registrants = $stmt->fetchAll();
-          if(count($registrants) > 0) {
-            echo "<h2>Люди, которые зарегистрированы:</h2>";
-            echo "<table>";
-            echo "<tr><th>Name</th>";
-            echo "<th>Email</th>";
-            echo "<th>Gender</th>";
-            echo "<th>Date</th></tr>";
-            foreach($registrants as $registrant) {
-              echo "<tr><td>".$registrant['name']."</td>";
-              echo "<td>".$registrant['email']."</td>";
-              echo "<td>".$registrant['gender']."</td>";
-              echo "<td>".$registrant['date']."</td></tr>";
-            }
-        }
-        
-
+        $gender = $_POST['gender'];
+                
         // Insert data
         $sql_insert ="INSERT INTO registration_tb (name, email, date, gender) VALUES (?,?,?,?)";
         $stmt = $conn->prepare($sql_insert);
