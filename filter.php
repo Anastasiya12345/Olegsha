@@ -4,6 +4,8 @@
 {
     $gender = $_POST['gender'];
     $sql_select = "SELECT * FROM registration_tb LIKE '%".$gender."%'";
+    $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $stmt = $conn->query($sql_select);
     $registrants = $stmt->fetchAll();
     if(count($registrants) > 0) {
