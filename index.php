@@ -102,9 +102,9 @@
       echo "<h3>No one is currently registered.</h3>";
     }
     
-    <?php 
-      include_once("filter.php");
-    ?>
+    
+     include_once("filter.php");
+    
     
     ?>
 
