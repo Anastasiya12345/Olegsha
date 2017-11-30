@@ -1,13 +1,16 @@
+
+<!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
     <title>Регистрационная форма</title>
-    <link rel ="stylesheet" href ="/style.css">
-    <link rel ="stylesheet" href ="/form.css">
+    <link rel ="stylesheet" href ="css/style.css">
+    <link rel ="stylesheet" href ="css/form.css">
   </head>
   <body>
     <h1>Зарегистрироваться здесь!</h1>
     <p>Введите свое имя и адрес электронной почты и нажмите кнопку <strong>Отправить</strong> для регистрации.</p>
-    <form method ="post" action ="index.php" enctype ="multipart/form-data">
+    <form method ="post" action ="index.php">
       <div>
         <input type ="text" name ="name" id ="name" placeholder ="Введите ваше имя">
         <input type ="text" name ="email" id ="email" placeholder ="Ваш еmail..">
@@ -18,16 +21,15 @@
       <div>
         <select name ="gender" id ="gender" class ="gen">
           <option value ="">All</option>
-          <option value ="Man" <?php if($start == 'man'){echo 'selected';}?>>>Man</option>
-          <option value ="Woman" <?php if($start == 'woman'){echo 'selected';}?>>Woman</option>
+          <option value ="Man" >Man</option>
+          <option value ="Woman">Woman</option>
         </select>
         <br>
         <input type ="submit" name ="filter" class ="btn" value ="Фильтр">
       </div>
-
       <?php
       try {
-        $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
+        $conn = new PDO("mysql:host=localhost; Database = Prime", "root", null);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         if(isset($_POST["clear"])) {
           $sql1 = "DELETE FROM registration_tb";
@@ -40,11 +42,10 @@
       }
       ?>
     </form>
-
     <?php
     try {
-      $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
-      $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $conn = new PDO("mysql:host=localhost; Database = Prime", "root", null);
+      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     catch (PDOException $e) {
       print("Ошибка подключения к SQL Server.");
@@ -72,7 +73,7 @@
       echo "<h3>Вы зарегистрировались!</h3>";
     }
 
-      $sql_select  = "SELECT * FROM registration_tb";
+      $sql_select = "SELECT * FROM registration_tb";
       $stmt = $conn->query($sql_select);
       $registrants = $stmt->fetchAll();
       if(count($registrants) > 0) {
@@ -89,33 +90,12 @@
           echo "<td>".$registrant['date']."</td></tr>";
         }
 
-        if(isset($_POST['filter']))
-        {
-        $start = $_POST['gender'];
-        $sql_select = $con->prepare('SELECT * FROM registration_tb WHERE gender like :start');
-        $stmt = $conn->query($sql_select);
-        $sql_select->execute(array(
-
-                 ':start'=>$start.'%'
-
-        ));
-        $registrants = $stmt->fetchAll();
-
-        foreach($registrants as $registrant) {
-          echo "<tr><td>".$registrant['name']."</td>";
-          echo "<td>".$registrant['email']."</td>";
-          echo "<td>".$registrant['gender']."</td>";
-          echo "<td>".$registrant['date']."</td></tr>";
-        }
 
         echo "</table>";
       }
       else {
         echo "<h3>В настоящее время никто не зарегистрирован.</h3>";
       }
-
-
-    ?>
-
+      ?>
   </body>
 </html>
