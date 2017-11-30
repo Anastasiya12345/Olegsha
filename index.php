@@ -21,8 +21,8 @@
       <div>
         <select name ="gender" id ="gender" class ="gen">
           <option value ="">All</option>
-          <option value ="Man" >Man</option>
-          <option value ="Woman">Woman</option>
+          <option value ="Man" <?php if($start == 'Man'){echo 'selected';}?>>Man</option>
+          <option value ="Woman" <?php if($start == 'Woman'){echo 'selected';}?>>Woman</option>
         </select>
         <br>
         <input type ="submit" name ="filter" class ="btn" value ="Фильтр">
