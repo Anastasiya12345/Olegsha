@@ -7,6 +7,7 @@
   <body>
     <h1>Register here!</h1>
     <p>Fill in your name and email address, then click <strong>Submit</strong> to register.</p>
+    
     <form method="post" action="index.php" enctype="multipart/form-data">
       <div>
         <input type="text" name="name" id="name" placeholder="Введите ваше имя">
@@ -21,9 +22,9 @@
           <option value="Man">Man</option>
           <option value="Woman">Woman</option>
         </select>
+        <input type="submit" name="filter" class="btn" value="Фильтр">
       </div>
      <?php
-      
       
   try {
       $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
@@ -44,12 +45,7 @@
       
     </form>
     
-    <br><br>
- 
-    <div>
-      <input type="submit" name="filter" class="btn" value="Фильтр">
-    </div>
-    
+
     <?php
     try {
       $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
