@@ -39,7 +39,7 @@
     die(print_r($e));
   }
 ?>
-      include_once("/filter.php");
+      include_once "filter.php";
       
     </form>
     
