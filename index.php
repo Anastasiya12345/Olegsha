@@ -4,8 +4,8 @@
   <head>
     <meta charset="utf-8">
     <title>Регистрационная форма</title>
-    <link rel ="stylesheet" href ="css/style.css">
-    <link rel ="stylesheet" href ="css/form.css">
+    <link rel ="stylesheet" href ="/style.css">
+    <link rel ="stylesheet" href ="/form.css">
   </head>
   <body>
     <h1>Зарегистрироваться здесь!</h1>
