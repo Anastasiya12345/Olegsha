@@ -24,7 +24,10 @@
       </div>
      <?php
       
-       if(isset($_POST['filterBtn'])) {
+       
+      
+  try {
+    if(isset($_POST['filterBtn'])) {
          $gens = $_POST['gens'];
          $sql_select = "SELECT * FROM registration_tb LIKE '%".$gens."%'";
          $stmt = $conn->query($sql_select);
@@ -48,8 +51,6 @@
            echo "<h3>No one is currently registered.</h3>";
          }
        }
-      
-  try {
       $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
