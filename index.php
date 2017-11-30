@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,7 +9,7 @@
   <body>
     <h1>Зарегистрироваться здесь!</h1>
     <p>Введите свое имя и адрес электронной почты и нажмите кнопку <strong>Отправить</strong> для регистрации.</p>
-    <form method ="post" action ="index.php" enctype="multipart/form-data">
+    <form method ="post" action ="index.php">
       <div>
         <input type ="text" name ="name" id ="name" placeholder ="Введите ваше имя">
         <input type ="text" name ="email" id ="email" placeholder ="Ваш еmail..">
@@ -27,16 +26,6 @@
         <br>
         <input type ="submit" name ="filter" class ="btn" value ="Фильтр">
       </div>
-      <table>
-        <tr>
-          <td>Name</td>
-          <td>Email</td>
-          <td>Gender</td>
-          <td>Date</td>
-        </tr>
-        <?php echo $tableContent; ?>
-      </table>
-
       <?php
       try {
         $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
@@ -67,7 +56,7 @@
         $email  = $_POST['email'];
         $date   = date("Y-m-d");
         $gender = $_POST['gender'];
-
+                
         // Insert data
         $sql_insert ="INSERT INTO registration_tb (name, email, date, gender) VALUES (?,?,?,?)";
         $stmt = $conn->prepare($sql_insert);
@@ -82,20 +71,32 @@
       }
       echo "<h3>Вы зарегистрировались!</h3>";
     }
-      $tableContent = '';
+
       $sql_select = "SELECT * FROM registration_tb";
       $stmt = $conn->query($sql_select);
       $registrants = $stmt->fetchAll();
-
+      if(count($registrants) > 0) {
+        echo "<h2>Люди, которые зарегистрированы:</h2>";
+        echo "<table>";
+        echo "<tr><th>Name</th>";
+        echo "<th>Email</th>";
+        echo "<th>Gender</th>";
+        echo "<th>Date</th></tr>";
         foreach($registrants as $registrant) {
-          $tableContent = $tableContent.'<tr>'.
-                  '<td>'.$registrant['name'].'</td>'
-                  .'<td>'.$registrant['email'].'</td>'
-                  .'<td>'.$registrant['gender'].'</td>'
-                  .'<td>'.$registrant['data'].'</td>';
+          echo "<tr><td>".$registrant['name']."</td>";
+          echo "<td>".$registrant['email']."</td>";
+          echo "<td>".$registrant['gender']."</td>";
+          echo "<td>".$registrant['date']."</td></tr>";
         }
-
         
+        echo "</table>";
+      }
+      else {
+        echo "<h3>В настоящее время никто не зарегистрирован.</h3>";
+      }
+    
+     
+    
       ?>
   </body>
 </html>
