@@ -110,20 +110,20 @@
         $registrants = $stmt->fetchAll();
 
         if(count($registrants) > 0) {
-                echo "<h2>Люди, которые зарегистрированы:</h2>";
-                echo "<table>";
-                echo "<tr><th>Name</th>";
-                echo "<th>Email</th>";
-                echo "<th>Gender</th>";
-                echo "<th>Date</th></tr>";
+                 "<h2>Люди, которые зарегистрированы:</h2>";
+                 "<table>";
+                 "<tr><th>Name</th>";
+                 "<th>Email</th>";
+                 "<th>Gender</th>";
+                 "<th>Date</th></tr>";
                 foreach($registrants as $registrant) {
-                  echo "<tr><td>".$registrant['name']."</td>";
-                  echo "<td>".$registrant['email']."</td>";
-                  echo "<td>".$registrant['gender']."</td>";
-                  echo "<td>".$registrant['date']."</td></tr>";
+                   "<tr><td>".$registrant['name']."</td>";
+                   "<td>".$registrant['email']."</td>";
+                   "<td>".$registrant['gender']."</td>";
+                  "<td>".$registrant['date']."</td></tr>";
                 }
                 
-                echo "</table>";
+                 "</table>";
               }
               else {
                 echo "<h3>В настоящее время никто не зарегистрирован.</h3>";
