@@ -24,7 +24,7 @@
           <option value ="Woman" <?php if($gender == 'Woman'){echo 'selected';}?>>Woman</option>
         </select>
         <br>
-        <input type ="button" name ="filter" class ="btn" value ="Фильтр">
+        <input type ="submit" name ="filter" class ="btn" value ="Фильтр">
       </div>
       <?php
       try {
