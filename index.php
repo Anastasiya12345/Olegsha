@@ -32,6 +32,32 @@
     <br>
     <input type ="submit" name ="filter" class ="btn" value ="Фильтр">
       </div>
+      
+      <?php
+      try {
+        $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        if(isset($_POST['filter'])) {
+        $start = $gender;
+        $sql_select = 'SELECT * FROM registration_tb WHERE start like :start';
+        $stmt = $conn->query($sql_select);
+        $stmt->execute(array(':start'=>$start.'%'));
+        $registrants = $stmt->fetchAll();
+      
+        foreach($registrants as $registrant) {
+          "<tr><td>".$registrant['name']."</td>";
+          "<td>".$registrant['email']."</td>";
+          "<td>".$registrant['gender']."</td>";
+          "<td>".$registrant['date']."</td></tr>";
+      }
+    }
+      }
+      catch (PDOException $e) {
+        print("Ошибка подключения к SQL Server.");
+        die(print_r($e));
+      }
+       
+      ?>
       <?php
       try {
         $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
@@ -102,20 +128,7 @@
         echo "<h3>В настоящее время никто не зарегистрирован.</h3>";
       }
     
-    if(isset($_POST['filter'])) {
-        $start = $gender;
-        $sql_select = 'SELECT * FROM registration_tb WHERE start like :start';
-        $stmt = $conn->query($sql_select);
-        $stmt->execute(array(':start'=>$start.'%'));
-        $registrants = $stmt->fetchAll();
-      
-      foreach($registrants as $registrant) {
-        "<tr><td>".$registrant['name']."</td>";
-        "<td>".$registrant['email']."</td>";
-        "<td>".$registrant['gender']."</td>";
-        "<td>".$registrant['date']."</td></tr>";
-      }
-    }
+   
     
       ?>
     
