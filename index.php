@@ -23,6 +23,14 @@
           <option value ="Man" <?php if($gender == 'Man'){echo 'selected';}?>>Man</option>
           <option value ="Woman" <?php if($gender == 'Woman'){echo 'selected';}?>>Woman</option>
         </select>
+          <br>
+    <select name="start">
+      <option value="">All</option>
+      <option value="Man" <?php if($start == 'Man'){echo 'selected';}?>>Man</option>
+      <option value="Woman" <?php if($start == 'Woman'){echo 'selected';}?>>Woman</option>
+    </select>
+    <br>
+    <input type ="submit" name ="filter" class ="btn" value ="Фильтр">
       </div>
       <?php
       try {
@@ -123,13 +131,6 @@
       }
     
       ?>
-      <br>
-    <select name="start">
-      <option value="">All</option>
-      <option value="Man" <?php if($start == 'Man'){echo 'selected';}?>>Man</option>
-      <option value="Woman" <?php if($start == 'Woman'){echo 'selected';}?>>Woman</option>
-    </select>
-    <br>
-    <input type ="submit" name ="filter" class ="btn" value ="Фильтр">
+    
   </body>
 </html>
