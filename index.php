@@ -74,6 +74,7 @@
 
       $sql_select = "SELECT * FROM registration_tb";
       $stmt = $conn->query($sql_select);
+      $stmt->execute();
       $registrants = $stmt->fetchAll();
       if(count($registrants) > 0) {
         echo "<h2>Люди, которые зарегистрированы:</h2>";
@@ -98,7 +99,7 @@
     if(isset($_POST['filter'])) {
         $gender = $_POST['gender'];
         $sql_select = "SELECT * FROM registration_tb WHERE gender like :gender'";
-        $stmt = $conn->prepare($sql_select);
+        $stmt = $conn->query($sql_select);
         $stmt->execute(array(':gender'=>$gender.'%'));
         $registrants = $stmt->fetchAll();
 
