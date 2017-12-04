@@ -108,27 +108,14 @@
         $stmt = $conn->query($sql_select);
         $stmt->execute(array(':start'=>$start.'%'));
         $registrants = $stmt->fetchAll();
-
-        if(count($registrants) > 0) {
-                 "<h2>Люди, которые зарегистрированы:</h2>";
-                 "<table>";
-                 "<tr><th>Name</th>";
-                 "<th>Email</th>";
-                 "<th>Gender</th>";
-                 "<th>Date</th></tr>";
-                foreach($registrants as $registrant) {
-                   "<tr><td>".$registrant['name']."</td>";
-                   "<td>".$registrant['email']."</td>";
-                   "<td>".$registrant['gender']."</td>";
-                  "<td>".$registrant['date']."</td></tr>";
-                }
-                
-                 "</table>";
-              }
-              else {
-                echo "<h3>В настоящее время никто не зарегистрирован.</h3>";
-              }
+      
+      foreach($registrants as $registrant) {
+        "<tr><td>".$registrant['name']."</td>";
+        "<td>".$registrant['email']."</td>";
+        "<td>".$registrant['gender']."</td>";
+        "<td>".$registrant['date']."</td></tr>";
       }
+    }
     
       ?>
     
