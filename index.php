@@ -95,7 +95,7 @@
       }
     
     if(isset($_POST['filter'])) {
-        $gender = $_POST['start'];
+        $start = $gender;
         $sql_select = 'SELECT * FROM registration_tb WHERE start like :start';
         $stmt = $conn->query($sql_select);
         $stmt->execute(array(':start'=>$start.'%'));
