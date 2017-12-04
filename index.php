@@ -32,10 +32,10 @@
         $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         if(isset($_POST['filter'])) {
-        $start = $gender;
-        $sql_select = 'SELECT * FROM registration_tb WHERE start like :start';
+        $gender = $_POST['gender'];
+        $sql_select = 'SELECT * FROM registration_tb WHERE gender like :gender';
         $stmt = $conn->query($sql_select);
-        $stmt->execute(array(':start'=>$start.'%'));
+        $stmt->execute(array(':gender'=>$gender.'%'));
         $registrants = $stmt->fetchAll();
       
         foreach($registrants as $registrant) {
