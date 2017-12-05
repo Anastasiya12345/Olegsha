@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-      <html>
+ <html>
         <head>
           <meta charset="utf-8">
           <title>Регистрационная форма</title>
@@ -28,7 +28,7 @@
               </div>
             </form>
             </body>
-      </html>
+      </html>     
 
 <?php
     $dsn = "sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime";
