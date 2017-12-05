@@ -25,6 +25,11 @@
               </select>
               <input type="submit" name="filter" class="btn" value="Фильтр">
               </div>
+              <select name ="start"  class ="gen">
+                <option value ="">All</option>
+                <option value ="Man" <?php if($start == 'Man'){echo 'selected';}?>>Man</option>
+                <option value ="Woman" <?php if($start == 'Woman'){echo 'selected';}?>>Woman</option>
+              </select>
             </form>
             </body>
       </html>
@@ -46,7 +51,7 @@
       print("Ошибка подключения к SQL Server.");
       die(print_r($e));
     }
-    
+
     $conn = null;
 
 ?>
@@ -116,10 +121,10 @@ $password = "Lgj231997";
           $stmt = $conn->query($sql_select);
           $stmt->execute();
           if(isset($_POST['filter'])) {
-            $gender = $_POST['gender'];
-            $sql_select = "SELECT * FROM registration_tb WHERE gender like :gender";
+            $start = $gender;
+            $sql_select = "SELECT * FROM registration_tb WHERE start like :start";
             $stmt = $conn->prepare($sql_select);
-            $stmt->execute(array(':gender'=>$gender.'%'));
+            $stmt->execute(array(':start'=>$start.'%'));
           }
           $registrants = $stmt->fetchAll();
           if(count($registrants) > 0) {
