@@ -25,11 +25,6 @@
               </select>
               <input type="submit" name="filter" class="btn" value="Фильтр">
               </div>
-              <select name ="start"  class ="gen">
-                <option value ="">All</option>
-                <option value ="Man" <?php if($start == 'Man'){echo 'selected';}?>>Man</option>
-                <option value ="Woman" <?php if($start == 'Woman'){echo 'selected';}?>>Woman</option>
-              </select>
             </form>
             </body>
       </html>
@@ -121,10 +116,10 @@ $password = "Lgj231997";
           $stmt = $conn->query($sql_select);
           $stmt->execute();
           if(isset($_POST['filter'])) {
-            $start = $gender;
-            $sql_select = "SELECT * FROM registration_tb WHERE start like :start";
+            $gender = $_POST['gender'];
+            $sql_select = "SELECT * FROM registration_tb WHERE gender like :gender";
             $stmt = $conn->prepare($sql_select);
-            $stmt->execute(array(':start'=>$start.'%'));
+            $stmt->execute(array(':gender'=>$gender.'%'));
           }
           $registrants = $stmt->fetchAll();
           if(count($registrants) > 0) {
