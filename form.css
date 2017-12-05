@@ -27,6 +27,10 @@ form .btn {
   margin-bottom: 0;
   background-color: white;
   width: 50%;
+  float: ;
+}
+
+form .btn#clr {
   float: left;
 }
 
