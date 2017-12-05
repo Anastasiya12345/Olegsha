@@ -2,10 +2,7 @@
 try {
     $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    if($sql == "") {
-        echo "<h3>Таблица уже создана.</h3>"
-    }
-    else {
+    if($sql = 1) {
     $sql = "CREATE TABLE registration_tb(
     id INT NOT NULL IDENTITY(1,1), 
     PRIMARY KEY(id),
@@ -14,6 +11,9 @@ try {
     gender VARCHAR(10),
     date DATE)";
     $conn->query($sql);
+   }
+    else {
+    echo "<h3>Таблица существует.</h3>";
     }
     
 }
