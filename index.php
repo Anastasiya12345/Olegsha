@@ -85,12 +85,14 @@ $password = "Lgj231997";
             $stmt->bindValue(3, $date);
             $stmt->bindValue(4, $gender);
             $stmt->execute();
+           
+            echo "<h3>Вы зарегистрировались!</h3>";
           }
         }
         catch(Exception $e) {
           die(var_dump($e));
         }
-        echo "<h3>Вы зарегистрировались!</h3>";
+       
       }
 
       $conn = null;
