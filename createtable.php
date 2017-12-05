@@ -11,6 +11,7 @@ try {
     gender VARCHAR(10),
     date DATE)";
     $conn->query($sql);
+        echo "<h3>Таблица создана.</h3>";
    }
     else {
     echo "<h3>Таблица существует.</h3>";
@@ -21,5 +22,5 @@ catch (PDOException $e) {
     print("Ошибка подключения к SQL Server.");
     die(print_r($e));
 }
-echo "<h3>Таблица создана.</h3>";
+
 ?>
