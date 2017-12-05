@@ -14,8 +14,8 @@
               <input type ="text" name ="name" id ="name" placeholder ="Введите ваше имя">
               <input type ="text" name ="email" id ="email" placeholder ="Ваш еmail..">
               <div>
-                    <input type ="submit" name ="submit" class ="btn" value ="Отправить">     
-                    <input type ="submit" name ="clear" class ="btn" value ="Очистить"></pre>
+                    <input type ="submit" name ="submit"  class ="btn" value ="Отправить">     
+                    <input type ="submit" name ="clear" class ="btn" id = "clr" value ="Очистить"></pre>
               </div>
             </div>
             <div>
