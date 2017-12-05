@@ -27,6 +27,7 @@ form .btn {
   margin-bottom: 0;
   background-color: white;
   width: 50%;
+  float: left;
 }
 
 
