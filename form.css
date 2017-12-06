@@ -31,7 +31,9 @@ form .btn {
 }
 
 form .btn#clr {
-  float: right;
+  float: left;
+  padding: 10px 5%;
+  margin-bottom: 10px;
 }
 
 
