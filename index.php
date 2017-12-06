@@ -119,6 +119,7 @@ $password = "Lgj231997";
           $stmt = $conn->query($sql_select);
           $stmt->execute();
           if(isset($_POST['filter'])) {
+            echo "<h2>Результат фильтра:</h2>";
             $gender = $_POST['gender'];
             $sql_select = "SELECT * FROM registration_tb WHERE gender like :gender";
             $stmt = $conn->prepare($sql_select);
@@ -126,7 +127,6 @@ $password = "Lgj231997";
           }
           $registrants = $stmt->fetchAll();
           if(count($registrants) > 0) {
-           if($name == "" || $email == "") {
             echo "<h2>Люди, которые зарегистрированы:</h2>";
             echo "<table>";
             echo "<tr><th>Name</th>";
@@ -143,7 +143,6 @@ $password = "Lgj231997";
           }
           else {
             echo "<h3>В настоящее время никто не зарегистрирован.</h3>";
-          }
           }
 
 ?>
