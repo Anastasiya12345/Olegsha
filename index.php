@@ -76,6 +76,7 @@ $password = "Lgj231997";
 
           if ($name == "" || $email == "") {
             print("Не заполнены поля name и email.");
+           echo "<h3>Не заполнены поля name и email.</h3>";
           }
           else {
             $sql_insert ="INSERT INTO registration_tb (name, email, date, gender) VALUES (?,?,?,?)";
