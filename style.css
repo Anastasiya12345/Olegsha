@@ -12,6 +12,10 @@ body {
         margin-bottom: 0; 
         padding-bottom: 0; 
     }
+
+.ass {
+        color: red; 
+}
     
     h1 { font-size: 2em; }
     h2 { font-size: 1.75em; }
