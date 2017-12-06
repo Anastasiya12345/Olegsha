@@ -119,7 +119,6 @@ $password = "Lgj231997";
           $stmt = $conn->query($sql_select);
           $stmt->execute();
           if(isset($_POST['filter'])) {
-            echo "<h2>Результат фильтра:</h2>";
             $gender = $_POST['gender'];
             $sql_select = "SELECT * FROM registration_tb WHERE gender like :gender";
             $stmt = $conn->prepare($sql_select);
