@@ -2,7 +2,7 @@
 try {
     $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    if($sql = 0) {
+     //if($sql = 0) {
         $sql = "CREATE TABLE registration_one(
         id INT NOT NULL IDENTITY(1,1), 
         PRIMARY KEY(id),
@@ -20,7 +20,7 @@ try {
     else {
         echo "<h3>Таблица уже существует.</h3>";
     }
-}
+//}
 catch (PDOException $e) {
     print("Ошибка подключения к SQL Server.");
     die(print_r($e));
