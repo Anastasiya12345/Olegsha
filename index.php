@@ -42,7 +42,7 @@
       $conn = new PDO($dsn, $username, $password);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       if(isset($_POST["clear"])) {
-        $sql1 = "DELETE FROM registration_one";
+        $sql1 = "DELETE FROM registration_on";
         $conn->query($sql1);
       }
     }
@@ -84,7 +84,7 @@ $password = "Lgj231997";
            echo "<h3>Не заполнены поля name и email.</h3>";
           }
           else {
-            $sql_insert ="INSERT INTO registration_one (name, email, date, gender, age, country, birthday) VALUES (?,?,?,?,?,?,?)";
+            $sql_insert ="INSERT INTO registration_on (name, email, date, gender, age, country, birthday) VALUES (?,?,?,?,?,?,?)";
             $stmt = $conn->prepare($sql_insert);
             $stmt->bindValue(1, $name);
             $stmt->bindValue(2, $email);
@@ -124,12 +124,12 @@ $password = "Lgj231997";
           }
 
 
-          $sql_select = "SELECT * FROM registration_one";
+          $sql_select = "SELECT * FROM registration_on";
           $stmt = $conn->query($sql_select);
           $stmt->execute();
           if(isset($_POST['filter'])) {
             $gender = $_POST['gender'];
-            $sql_select = "SELECT * FROM registration_one WHERE gender like :gender";
+            $sql_select = "SELECT * FROM registration_on WHERE gender like :gender";
             $stmt = $conn->prepare($sql_select);
             $stmt->execute(array(':gender'=>$gender.'%'));
           }
