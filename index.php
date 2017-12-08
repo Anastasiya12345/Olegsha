@@ -11,12 +11,15 @@
           <p>Введите свое имя и адрес электронной почты и нажмите кнопку <strong>Отправить</strong> для регистрации.</p>
           <form action="index.php" method="post">
             <div>
-              <input type ="text" name ="name" id ="name" placeholder ="Введите ваше имя">
-              <input type ="text" name ="email" id ="email" placeholder ="Ваш еmail..">
-              <div>
-                    <input type ="submit" name ="submit"  class ="btn" value ="Отправить">     
-                    <input type ="submit" name ="clear" class ="btn" id = "clr" value ="Очистить"></pre>
-              </div>
+             <input type ="text" name ="name" id ="name" placeholder ="Введите ваше имя">
+             <input type ="text" name ="email" id ="email" placeholder ="Ваш еmail..">
+             <input type ="text" name ="age" id ="age" placeholder ="Ваш возраст..">
+             <input type ="text" name ="country" id ="country" placeholder ="Страна">
+             <input type ="text" name ="birthday" id ="birthday" placeholder ="Дата рождения">
+             <div>
+              <input type ="submit" name ="submit"  class ="btn" value ="Отправить">     
+              <input type ="submit" name ="clear" class ="btn" id = "clr" value ="Очистить"></pre>
+             </div>
             </div>
             <div>
               <select name ="gender"  class ="gen">
@@ -39,7 +42,7 @@
       $conn = new PDO($dsn, $username, $password);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       if(isset($_POST["clear"])) {
-        $sql1 = "DELETE FROM registration_tb";
+        $sql1 = "DELETE FROM registration_t1";
         $conn->query($sql1);
       }
     }
@@ -73,19 +76,25 @@ $password = "Lgj231997";
           $email  = $_POST['email'];
           $date  = date("Y-m-d");
           $gender = $_POST['gender'];
+          $age  = $_POST['age'];
+          $country  = $_POST['country'];
+          $birthday = $_POST['birthday'];
 
           if ($name == "" || $email == "") {
            echo "<h3>Не заполнены поля name и email.</h3>";
           }
           else {
-            $sql_insert ="INSERT INTO registration_tb (name, email, date, gender) VALUES (?,?,?,?)";
+            $sql_insert ="INSERT INTO registration_t1 (name, email, date, gender, age, country, birthday) VALUES (?,?,?,?,?,?,?)";
             $stmt = $conn->prepare($sql_insert);
             $stmt->bindValue(1, $name);
             $stmt->bindValue(2, $email);
             $stmt->bindValue(3, $date);
             $stmt->bindValue(4, $gender);
+            $stmt->bindValue(5, $age);
+            $stmt->bindValue(6, $country);
+            $stmt->bindValue(7, $birthday);
             $stmt->execute();
-           
+         
             echo "<h3>Вы зарегистрировались!</h3>";
           }
         }
@@ -115,12 +124,12 @@ $password = "Lgj231997";
           }
 
 
-          $sql_select = "SELECT * FROM registration_tb";
+          $sql_select = "SELECT * FROM registration_t1";
           $stmt = $conn->query($sql_select);
           $stmt->execute();
           if(isset($_POST['filter'])) {
             $gender = $_POST['gender'];
-            $sql_select = "SELECT * FROM registration_tb WHERE gender like :gender";
+            $sql_select = "SELECT * FROM registration_t1 WHERE gender like :gender";
             $stmt = $conn->prepare($sql_select);
             $stmt->execute(array(':gender'=>$gender.'%'));
           }
@@ -131,11 +140,17 @@ $password = "Lgj231997";
             echo "<tr><th>Name</th>";
             echo "<th>Email</th>";
             echo "<th>Gender</th>";
+            echo "<th>Age</th>";
+            echo "<th>Country</th>";
+            echo "<th>Birthday</th>";
             echo "<th>Date</th></tr>";
             foreach($registrants as $registrant) {
               echo "<td>".$registrant['name']."</td>";
               echo "<td>".$registrant['email']."</td>";
               echo "<td>".$registrant['gender']."</td>";
+              echo "<td>".$registrant['age']."</td>";
+              echo "<td>".$registrant['country']."</td>";
+              echo "<td>".$registrant['birthday']."</td>";
               echo "<td>".$registrant['date']."</td></tr>";
             }
             echo "</table>";
