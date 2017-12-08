@@ -10,7 +10,7 @@ try {
         gender VARCHAR(10),
         age VARCHAR(2),
         country VARCHAR(10),
-        birthday DATE,
+        birthday VARCHAR(10),
         date DATE)";
         $conn->query($sql);
         
