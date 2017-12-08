@@ -3,12 +3,15 @@ try {
     $conn = new PDO("sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime", "Skaylans", "Lgj231997");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     if($sql = 0) {
-        $sql = "CREATE TABLE registration_tb(
+        $sql = "CREATE TABLE registration_t1(
         id INT NOT NULL IDENTITY(1,1), 
         PRIMARY KEY(id),
         name VARCHAR(30),
         email VARCHAR(30),
         gender VARCHAR(10),
+        age VARCHAR(2),
+        country VARCHAR(10),
+        birthday DATE,
         date DATE)";
         $conn->query($sql);
         
