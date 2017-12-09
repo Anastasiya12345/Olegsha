@@ -141,7 +141,13 @@ $password = "Lgj231997";
             echo "<th>Email</th>";
             echo "<th>Gender</th>";
             echo "<th>Age</th>";
-            echo "<th>Country</th>";
+            echo "<th>
+            <select name ="coun"  class ="gen">
+                <option value ="">Страна</option>
+                <option value ="Russia">Russia</option>
+                <option value ="USA">USA</option>
+              </select>
+            </th>";
             echo "<th>Birthday</th>";
             echo "<th>Date</th></tr>";
             foreach($registrants as $registrant) {
