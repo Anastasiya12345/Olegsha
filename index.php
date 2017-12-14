@@ -13,7 +13,7 @@
             <div>
              <input type ="text" name ="name" id ="name" placeholder ="Введите ваше имя">
              <input type ="text" name ="email" id ="email" placeholder ="Ваш еmail..">
-             <input type ="date" name ="date" id ="date" placeholder ="Дата">
+             <input type ="date" name ="date_name" id ="date" placeholder ="Дата">
              <div>
               <input type ="submit" name ="submit"  class ="btn" value ="Отправить">     
               <input type ="submit" name ="clear" class ="btn" id = "clr" value ="Очистить"></pre>
@@ -80,7 +80,7 @@ $password = "Lgj231997";
           $name   = $_POST['name'];
           $email  = $_POST['email'];
           //$date  = date("Y-m-d");
-          $date = $_POST['date'];
+          $date = $_POST['date_name'];
           $gender = $_POST['gender'];
           //$age  = $_POST['age'];
           //$country  = $_POST['country'];
@@ -163,7 +163,7 @@ $password = "Lgj231997";
               //echo "<td>".$registrant['age']."</td>";
               //echo "<td>".$registrant['country']."</td>";
               //echo "<td>".$registrant['birthday']."</td>";
-              echo "<td>".$registrant['date']."</td></tr>";
+              echo "<td>".$registrant['date_name']."</td></tr>";
             }
             echo "</table>";
           }
