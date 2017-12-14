@@ -47,7 +47,7 @@
       $conn = new PDO($dsn, $username, $password);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       if(isset($_POST["clear"])) {
-        $sql1 = "DELETE FROM registration_tb";
+        $sql1 = "DELETE FROM registration_too";
         $conn->query($sql1);
       }
     }
@@ -90,7 +90,7 @@ $password = "Lgj231997";
            echo "<h3>Не заполнены поля name и email.</h3>";
           }
           else {
-            $sql_insert ="INSERT INTO registration_tb (name, email, date, gender, birthday) VALUES (?,?,?,?,?)";
+            $sql_insert ="INSERT INTO registration_too (name, email, date, gender, birthday) VALUES (?,?,?,?,?)";
             $stmt = $conn->prepare($sql_insert);
             $stmt->bindValue(1, $name);
             $stmt->bindValue(2, $email);
@@ -130,17 +130,17 @@ $password = "Lgj231997";
           }
 
 
-          $sql_select = "SELECT * FROM registration_tb";
+          $sql_select = "SELECT * FROM registration_too";
           $stmt = $conn->query($sql_select);
           $stmt->execute();
           if(isset($_POST['filter'])) {
             $gender = $_POST['gender'];
-            $sql_select = "SELECT * FROM registration_tb WHERE gender like :gender";
+            $sql_select = "SELECT * FROM registration_too WHERE gender like :gender";
             $stmt = $conn->prepare($sql_select);
             $stmt->execute(array(':gender'=>$gender.'%'));
           }
           if(isset($_POST['order_date'])) {
-             $sql_select = "SELECT * FROM registration_tb WHERE birthday BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'";
+             $sql_select = "SELECT * FROM registration_too WHERE birthday BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'";
              $stmt = $conn->prepare($sql_select);
              $stmt->execute(array(':birthday'=>$birthday.'%'));
           }
