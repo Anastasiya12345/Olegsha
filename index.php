@@ -15,7 +15,6 @@
              <input type ="text" name ="email" id ="email" placeholder ="Ваш еmail..">
              <input type ="text" name ="age" id ="age" placeholder ="Ваш возраст..">
              <input type ="text" name ="country" id ="country" placeholder ="Страна">
-             <input type ="date" name ="birthday" id ="birthday" placeholder ="Дата рождения">
              <div>
               <input type ="submit" name ="submit"  class ="btn" value ="Отправить">     
               <input type ="submit" name ="clear" class ="btn" id = "clr" value ="Очистить"></pre>
@@ -85,13 +84,13 @@ $password = "Lgj231997";
           $gender = $_POST['gender'];
           $age  = $_POST['age'];
           $country  = $_POST['country'];
-          $birthday = $_POST['birthday'];
+          //$birthday = $_POST['birthday'];
 
           if ($name == "" || $email == "") {
            echo "<h3>Не заполнены поля name и email.</h3>";
           }
           else {
-            $sql_insert ="INSERT INTO registration_on (name, email, date, gender, age, country, birthday) VALUES (?,?,?,?,?,?,?)";
+            $sql_insert ="INSERT INTO registration_on (name, email, date, gender, age, country) VALUES (?,?,?,?,?,?)";
             $stmt = $conn->prepare($sql_insert);
             $stmt->bindValue(1, $name);
             $stmt->bindValue(2, $email);
@@ -99,7 +98,7 @@ $password = "Lgj231997";
             $stmt->bindValue(4, $gender);
             $stmt->bindValue(5, $age);
             $stmt->bindValue(6, $country);
-            $stmt->bindValue(7, $birthday);
+            //$stmt->bindValue(7, $birthday);
             $stmt->execute();
          
             echo "<h3>Вы зарегистрировались!</h3>";
@@ -154,7 +153,7 @@ $password = "Lgj231997";
             echo "<th>Gender</th>";
             echo "<th>Age</th>";
             echo "<th>Country</th>";
-            echo "<th>Birthday</th>";
+            //echo "<th>Birthday</th>";
             echo "<th>Date</th></tr>";
             foreach($registrants as $registrant) {
               echo "<td>".$registrant['name']."</td>";
@@ -162,7 +161,7 @@ $password = "Lgj231997";
               echo "<td>".$registrant['gender']."</td>";
               echo "<td>".$registrant['age']."</td>";
               echo "<td>".$registrant['country']."</td>";
-              echo "<td>".$registrant['birthday']."</td>";
+              //echo "<td>".$registrant['birthday']."</td>";
               echo "<td>".$registrant['date']."</td></tr>";
             }
             echo "</table>";
