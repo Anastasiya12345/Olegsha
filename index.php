@@ -13,7 +13,7 @@
             <div>
              <input type ="text" name ="name" id ="name" placeholder ="Введите ваше имя">
              <input type ="text" name ="email" id ="email" placeholder ="Ваш еmail..">
-             <input type ="date" name ="date" id ="date">
+             <input type ="date" name ="date" id ="date" placeholder ="Дата">
              <div>
               <input type ="submit" name ="submit"  class ="btn" value ="Отправить">     
               <input type ="submit" name ="clear" class ="btn" id = "clr" value ="Очистить"></pre>
@@ -139,11 +139,11 @@ $password = "Lgj231997";
             $stmt = $conn->prepare($sql_select);
             $stmt->execute(array(':gender'=>$gender.'%'));
           }
-          elseif(isset($_POST['order_date'])) {
+          if(isset($_POST['order_date'])) {
              $sql_select = "SELECT * FROM registration_tb WHERE date BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'";
              $stmt = $conn->prepare($sql_select);
              $stmt->execute(array(':date'=>$date.'%'));
-            }
+          }
           $registrants = $stmt->fetchAll();
           
           if(count($registrants) > 0) {
