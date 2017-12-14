@@ -144,8 +144,8 @@ $password = "Lgj231997";
            $sql_select = "SELECT * FROM registration_on WHERE date BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'";
            $stmt = $conn->prepare($sql_select);
            $stmt->execute(array(':date'=>$date.'%'));
-           $registrants = $stmt->fetchAll();
           }
+          $registrants = $stmt->fetchAll();
           if(count($registrants) > 0) {
             echo "<h2>Люди, которые зарегистрированы:</h2>";
             echo "<table>";
@@ -153,13 +153,7 @@ $password = "Lgj231997";
             echo "<th>Email</th>";
             echo "<th>Gender</th>";
             echo "<th>Age</th>";
-            echo "<th>
-            <select name ="coun"  class ="gen">
-                <option value ="">Страна</option>
-                <option value ="Russia">Russia</option>
-                <option value ="USA">USA</option>
-              </select>
-            </th>";
+            echo "<th>Country</th>";
             echo "<th>Birthday</th>";
             echo "<th>Date</th></tr>";
             foreach($registrants as $registrant) {
