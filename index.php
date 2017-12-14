@@ -13,7 +13,7 @@
             <div>
              <input type ="text" name ="name" id ="name" placeholder ="Введите ваше имя">
              <input type ="text" name ="email" id ="email" placeholder ="Ваш еmail..">
-             <input type ="date" name ="date" id ="date" placeholder ="Дата">
+             <input type ="date" name ="birthday" id ="birthday" placeholder ="Дата рождения">
              <div>
               <input type ="submit" name ="submit"  class ="btn" value ="Отправить">     
               <input type ="submit" name ="clear" class ="btn" id = "clr" value ="Очистить"></pre>
@@ -84,13 +84,13 @@ $password = "Lgj231997";
           $gender = $_POST['gender'];
           //$age  = $_POST['age'];
           //$country  = $_POST['country'];
-          //$birthday = $_POST['birthday'];
+          $birthday = $_POST['birthday'];
 
           if ($name == "" || $email == "") {
            echo "<h3>Не заполнены поля name и email.</h3>";
           }
           else {
-            $sql_insert ="INSERT INTO registration_tb (name, email, date, gender) VALUES (?,?,?,?)";
+            $sql_insert ="INSERT INTO registration_tb (name, email, date, gender, birthday) VALUES (?,?,?,?,?)";
             $stmt = $conn->prepare($sql_insert);
             $stmt->bindValue(1, $name);
             $stmt->bindValue(2, $email);
@@ -98,7 +98,7 @@ $password = "Lgj231997";
             $stmt->bindValue(4, $gender);
             //$stmt->bindValue(5, $age);
             //$stmt->bindValue(6, $country);
-            //$stmt->bindValue(7, $birthday);
+            $stmt->bindValue(5, $birthday);
             $stmt->execute();
          
             echo "<h3>Вы зарегистрировались!</h3>";
@@ -140,9 +140,9 @@ $password = "Lgj231997";
             $stmt->execute(array(':gender'=>$gender.'%'));
           }
           if(isset($_POST['order_date'])) {
-             $sql_select = "SELECT * FROM registration_tb WHERE date BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'";
+             $sql_select = "SELECT * FROM registration_tb WHERE birthday BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'";
              $stmt = $conn->prepare($sql_select);
-             $stmt->execute(array(':date'=>$date.'%'));
+             $stmt->execute(array(':birthday'=>$birthday.'%'));
           }
           $registrants = $stmt->fetchAll();
           
@@ -154,7 +154,7 @@ $password = "Lgj231997";
             echo "<th>Gender</th>";
             //echo "<th>Age</th>";
             //echo "<th>Country</th>";
-            //echo "<th>Birthday</th>";
+            echo "<th>Birthday</th>";
             echo "<th>Date</th></tr>";
             foreach($registrants as $registrant) {
               echo "<td>".$registrant['name']."</td>";
@@ -162,7 +162,7 @@ $password = "Lgj231997";
               echo "<td>".$registrant['gender']."</td>";
               //echo "<td>".$registrant['age']."</td>";
               //echo "<td>".$registrant['country']."</td>";
-              //echo "<td>".$registrant['birthday']."</td>";
+              echo "<td>".$registrant['birthday']."</td>";
               echo "<td>".$registrant['date']."</td></tr>";
             }
             echo "</table>";
