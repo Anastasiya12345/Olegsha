@@ -34,7 +34,7 @@
          <div class="date_end">
           <input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" />
          </div>
-         <input type="submit" name="oreder_date" class="btn" value="Отбор">
+         <input type="submit" name="order_date" class="btn" value="Отбор">
             </form>
             </body>
       </html>     
@@ -139,7 +139,7 @@ $password = "Lgj231997";
             $stmt = $conn->prepare($sql_select);
             $stmt->execute(array(':gender'=>$gender.'%'));
           }
-          elseif (isset($_POST['oreder_date'])) {
+          elseif (isset($_POST['order_date'])) {
            $sql_select = "SELECT * FROM registration_on WHERE date BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'";
            $stmt = $conn->prepare($sql_select);
            $stmt->execute(array(':date'=>$date.'%'));
