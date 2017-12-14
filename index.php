@@ -133,8 +133,13 @@ $password = "Lgj231997";
           $sql_select = "SELECT * FROM registration_tb";
           $stmt = $conn->query($sql_select);
           $stmt->execute();
-          
-          if(isset($_POST['order_date'])) {
+          if(isset($_POST['filter'])) {
+            $gender = $_POST['gender'];
+            $sql_select = "SELECT * FROM registration_tb WHERE gender like :gender";
+            $stmt = $conn->prepare($sql_select);
+            $stmt->execute(array(':gender'=>$gender.'%'));
+          }
+          elseif(isset($_POST['order_date'])) {
              $sql_select = "SELECT * FROM registration_tb WHERE date BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'";
              $stmt = $conn->prepare($sql_select);
              $stmt->execute(array(':date'=>$date.'%'));
