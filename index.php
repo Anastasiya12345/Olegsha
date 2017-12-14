@@ -86,7 +86,7 @@ $password = "Lgj231997";
           $gender = $_POST['gender'];
           $age  = $_POST['age'];
           $country  = $_POST['country'];
-          //$birthday = $_POST['birthday'];
+          $birthday = $_POST['birthday'];
 
           if ($name == "" || $email == "") {
            echo "<h3>Не заполнены поля name и email.</h3>";
@@ -100,7 +100,7 @@ $password = "Lgj231997";
             $stmt->bindValue(4, $gender);
             $stmt->bindValue(5, $age);
             $stmt->bindValue(6, $country);
-            //$stmt->bindValue(7, $birthday);
+            $stmt->bindValue(7, $birthday);
             $stmt->execute();
          
             echo "<h3>Вы зарегистрировались!</h3>";
@@ -156,7 +156,7 @@ $password = "Lgj231997";
             echo "<th>Gender</th>";
             echo "<th>Age</th>";
             echo "<th>Country</th>";
-            //echo "<th>Birthday</th>";
+            echo "<th>Birthday</th>";
             echo "<th>Date</th></tr>";
             foreach($registrants as $registrant) {
               echo "<td>".$registrant['name']."</td>";
@@ -164,7 +164,7 @@ $password = "Lgj231997";
               echo "<td>".$registrant['gender']."</td>";
               echo "<td>".$registrant['age']."</td>";
               echo "<td>".$registrant['country']."</td>";
-              //echo "<td>".$registrant['birthday']."</td>";
+              echo "<td>".$registrant['birthday']."</td>";
               echo "<td>".$registrant['date']."</td></tr>";
             }
             echo "</table>";
