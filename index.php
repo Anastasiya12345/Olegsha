@@ -13,6 +13,7 @@
             <div>
              <input type ="text" name ="name" id ="name" placeholder ="Введите ваше имя">
              <input type ="text" name ="email" id ="email" placeholder ="Ваш еmail..">
+             <input type ="date" name ="date" id ="date">
              <div>
               <input type ="submit" name ="submit"  class ="btn" value ="Отправить">     
               <input type ="submit" name ="clear" class ="btn" id = "clr" value ="Очистить"></pre>
@@ -78,8 +79,8 @@ $password = "Lgj231997";
         try {
           $name   = $_POST['name'];
           $email  = $_POST['email'];
-          $date  = date("Y-m-d");
-          //$date = $_POST['date'];
+          //$date  = date("Y-m-d");
+          $date = $_POST['date'];
           $gender = $_POST['gender'];
           //$age  = $_POST['age'];
           //$country  = $_POST['country'];
