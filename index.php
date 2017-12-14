@@ -140,13 +140,14 @@ $password = "Lgj231997";
             $sql_select = "SELECT * FROM registration_on WHERE gender like :gender";
             $stmt = $conn->prepare($sql_select);
             $stmt->execute(array(':gender'=>$gender.'%'));
+            $registrants = $stmt->fetchAll();
           }
           if (isset($_POST['order_date'])) {
            $sql_select = "SELECT * FROM registration_on WHERE date BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'";
            $stmt = $conn->prepare($sql_select);
            $stmt->execute(array(':date'=>$date.'%'));
+           $registrants = $stmt->fetchAll();
           }
-          $registrants = $stmt->fetchAll();
           if(count($registrants) > 0) {
             echo "<h2>Люди, которые зарегистрированы:</h2>";
             echo "<table>";
