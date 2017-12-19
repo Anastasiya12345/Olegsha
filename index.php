@@ -79,8 +79,8 @@ $password = "Lgj231997";
         try {
           $name   = $_POST['name'];
           $email  = $_POST['email'];
-          $date  = date("d-m-Y");
-          $date = $_POST['date'];
+          $date  = date("d-m-y");
+          //$date = $_POST['date'];
           $gender = $_POST['gender'];
           //$age  = $_POST['age'];
           //$country  = $_POST['country'];
