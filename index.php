@@ -140,7 +140,7 @@ $password = "Lgj231997";
             $stmt->execute(array(':gender'=>$gender.'%'));
           }
           if(isset($_POST['order_date'])) {
-             $sql_select = "SELECT * FROM registration_too WHERE birthday BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'";
+             $sql_select = "SELECT * FROM registration_too WHERE date BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'";
              $stmt = $conn->prepare($sql_select);
              $stmt->execute(array(':birthday'=>$birthday.'%'));
           }
@@ -154,7 +154,7 @@ $password = "Lgj231997";
             echo "<th>Gender</th>";
             //echo "<th>Age</th>";
             //echo "<th>Country</th>";
-            echo "<th>Birthday</th>";
+            //echo "<th>Birthday</th>";
             echo "<th>Date</th></tr>";
             foreach($registrants as $registrant) {
               echo "<td>".$registrant['name']."</td>";
@@ -162,7 +162,7 @@ $password = "Lgj231997";
               echo "<td>".$registrant['gender']."</td>";
               //echo "<td>".$registrant['age']."</td>";
               //echo "<td>".$registrant['country']."</td>";
-              echo "<td>".$registrant['birthday']."</td>";
+              //echo "<td>".$registrant['birthday']."</td>";
               echo "<td>".$registrant['date']."</td></tr>";
             }
             echo "</table>";
