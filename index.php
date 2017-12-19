@@ -13,7 +13,6 @@
             <div>
              <input type ="text" name ="name" id ="name" placeholder ="Введите ваше имя">
              <input type ="text" name ="email" id ="email" placeholder ="Ваш еmail..">
-             <input type ="text" name ="birthday" id ="birthday" placeholder ="Дата рождения">
              <div>
               <input type ="submit" name ="submit"  class ="btn" value ="Отправить">     
               <input type ="submit" name ="clear" class ="btn" id = "clr" value ="Очистить"></pre>
@@ -79,8 +78,7 @@ $password = "Lgj231997";
         try {
           $name   = $_POST['name'];
           $email  = $_POST['email'];
-          $date  = date("d-m-y");
-          //$date = $_POST['date'];
+          $date  = date("D-m-y");
           $gender = $_POST['gender'];
           //$age  = $_POST['age'];
           //$country  = $_POST['country'];
@@ -142,7 +140,7 @@ $password = "Lgj231997";
           if(isset($_POST['order_date'])) {
              $sql_select = "SELECT * FROM registration_too WHERE date BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'";
              $stmt = $conn->prepare($sql_select);
-             $stmt->execute(array(':birthday'=>$birthday.'%'));
+             $stmt->execute(array(':date'=>$date.'%'));
           }
           $registrants = $stmt->fetchAll();
           
