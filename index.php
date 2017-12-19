@@ -28,10 +28,10 @@
               <input type="submit" name="filter" class="btn" value="Фильтр">
          </div>
          <div class="col-md-3">
-          <input type="date" name="from_date" id="from_date" class="form-control" placeholder="From Date" />
+          <input type="text" name="from_date" id="from_date" class="form-control" placeholder="From Date" />
          </div>
          <div class="col-md-3">
-          <input type="date" name="to_date" id="to_date" class="form-control" placeholder="To Date" />
+          <input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" />
          </div>
          <input type="submit" name="order_date" class="btn" value="Отбор">
             </form>
@@ -140,9 +140,9 @@ $password = "Lgj231997";
             $stmt->execute(array(':gender'=>$gender.'%'));
           }
           if(isset($_POST['order_date'])) {
-            $sql_select = "SELECT * FROM registration_T1 WHERE date BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'";
+            $sql_select = "SELECT * FROM registration_T1 WHERE name BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'";
             $stmt = $conn->query($sql_select);
-            $stmt->execute(array(':date'=>$date.'%'));
+            $stmt->execute(array(':name'=>$name.'%'));
           }
           
           $registrants = $stmt->fetchAll();
