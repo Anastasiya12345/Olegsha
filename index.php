@@ -79,18 +79,18 @@ $password = "Lgj231997";
         try {
           $name   = $_POST['name'];
           $email  = $_POST['email'];
-          //$date  = date("Y-m-d");
+          $date  = date("d-m-Y");
           $date = $_POST['date'];
           $gender = $_POST['gender'];
           //$age  = $_POST['age'];
           //$country  = $_POST['country'];
-          $birthday = $_POST['birthday'];
+          //$birthday = $_POST['birthday'];
 
           if ($name == "" || $email == "") {
            echo "<h3>Не заполнены поля name и email.</h3>";
           }
           else {
-            $sql_insert ="INSERT INTO registration_too (name, email, date, gender, birthday) VALUES (?,?,?,?,?)";
+            $sql_insert ="INSERT INTO registration_too (name, email, date, gender) VALUES (?,?,?,?)";
             $stmt = $conn->prepare($sql_insert);
             $stmt->bindValue(1, $name);
             $stmt->bindValue(2, $email);
@@ -98,7 +98,7 @@ $password = "Lgj231997";
             $stmt->bindValue(4, $gender);
             //$stmt->bindValue(5, $age);
             //$stmt->bindValue(6, $country);
-            $stmt->bindValue(5, $birthday);
+            //$stmt->bindValue(5, $birthday);
             $stmt->execute();
          
             echo "<h3>Вы зарегистрировались!</h3>";
