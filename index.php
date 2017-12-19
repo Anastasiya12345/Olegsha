@@ -138,12 +138,13 @@ $password = "Lgj231997";
             $sql_select = "SELECT * FROM registration_T1 WHERE gender like :gender";
             $stmt = $conn->prepare($sql_select);
             $stmt->execute(array(':gender'=>$gender.'%'));
-          }
-          if(isset($_POST['order_date'])) {
+           if(isset($_POST['order_date'])) {
              $sql_select = "SELECT * FROM registration_T1 WHERE (date >= '".$_POST["from_date"]."') AND (date <= '".$_POST["to_date"]."')";
              $stmt = $conn->prepare($sql_select);
-             //$stmt->execute(array(':date'=>$date.'%'));
+             $stmt->execute(array(':date'=>$date.'%'));
           }
+          }
+          
           $registrants = $stmt->fetchAll();
           
           if(count($registrants) > 0) {
