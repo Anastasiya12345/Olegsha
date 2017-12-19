@@ -28,10 +28,10 @@
               <input type="submit" name="filter" class="btn" value="Фильтр">
          </div>
          <div class="col-md-3">
-          <input type="text" name="from_date" id="from_date" class="form-control" placeholder="From Date" />
+          <input type="date" name="from_date" id="from_date" class="form-control" placeholder="From Date" />
          </div>
          <div class="col-md-3">
-          <input type="text" name="to_date" id="to_date" class="form-control" placeholder="To Date" />
+          <input type="date" name="to_date" id="to_date" class="form-control" placeholder="To Date" />
          </div>
          <input type="submit" name="order_date" class="btn" value="Отбор">
             </form>
