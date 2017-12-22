@@ -13,7 +13,7 @@
             <div>
              <input type ="text" name ="name" id ="name" placeholder ="Введите ваше имя">
              <input type ="text" name ="email" id ="email" placeholder ="Ваш еmail..">
-             <input type ="date" name ="date" id ="date" placeholder ="Дата">
+             <input type ="date" name ="date_on" id ="date_on" placeholder ="Дата">
              <div>
               <input type ="submit" name ="submit"  class ="btn" value ="Отправить">     
               <input type ="submit" name ="clear" class ="btn" id = "clr" value ="Очистить"></pre>
@@ -80,7 +80,7 @@ $password = "Lgj231997";
           $name   = $_POST['name'];
           $email  = $_POST['email'];
           //$date  = date("D-m-y");
-          $date  = $_POST['date'];
+          $date  = $_POST['date_on'];
           $gender = $_POST['gender'];
           //$age  = $_POST['age'];
           //$country  = $_POST['country'];
@@ -142,7 +142,7 @@ $password = "Lgj231997";
           if(isset($_POST['order_date'])) {
             $from_date = $_POST['from_date'];
             $to_date = $_POST['to_date'];
-            $sql_select = "SELECT * FROM registration_T1 WHERE date BETWEEN :from_date AND :to_date";
+            $sql_select = "SELECT * FROM registration_T1 WHERE date_on BETWEEN :from_date AND :to_date";
             $stmt = $conn->query($sql_select);
             $stmt->execute(array(':date'=>$date.'%'));
           }
