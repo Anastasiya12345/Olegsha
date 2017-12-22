@@ -140,7 +140,7 @@ $password = "Lgj231997";
           if(isset($_POST['order_date'])) {
             $from_date = $_POST['from_date'];
             $to_date = $_POST['to_date'];
-            $sql_select = "SELECT * FROM registration_tab WHERE 'reg_date' >= "'.$from_date." AND 'reg_date' <= "'.$to_date."";
+            $sql_select = "SELECT * FROM registration_tab WHERE reg_date >= "'.$from_date." AND reg_date <= "'.$to_date."";
             $stmt = $conn->query($sql_select);
             $stmt->execute(array(':reg_date'=>$reg_date.'%'));
           }
