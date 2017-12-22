@@ -142,7 +142,7 @@ $fr=strtotime($from);
           if(isset($_POST['order_date'])) {
             //$from_date = $_POST['from_date'];
             //$to_date = $_POST['to_date'];
-            $sql_select = "SELECT * FROM registration_tab WHERE reg_date = '$fr'";
+            $sql_select = "SELECT * FROM registration_tab WHERE reg_date != '$fr'";
             $stmt = $conn->prepare($sql_select);
             //$stmt->execute();
             $stmt->execute(array(':reg_date'=>$reg_date.'%'));
