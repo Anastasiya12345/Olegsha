@@ -117,7 +117,7 @@ $password = "Lgj231997";
 $dsn = "sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime";
 $username = "Skaylans";
 $password = "Lgj231997";
-$from='20-12-2017';
+$from='2017-12-20';
 $fr=strtotime($from);
 
           try {
