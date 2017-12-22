@@ -118,7 +118,7 @@ $dsn = "sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime"
 $username = "Skaylans";
 $password = "Lgj231997";
 $from='2017-12-20';
-$fr=strtotime($from);
+$fr= date('Y-m-d',$from);
 echo "$fr";
           try {
             $conn = new PDO($dsn, $username, $password);
