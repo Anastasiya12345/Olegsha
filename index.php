@@ -117,6 +117,8 @@ $password = "Lgj231997";
 $dsn = "sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime";
 $username = "Skaylans";
 $password = "Lgj231997";
+$from='20-12-2017';
+$fr=strtotime($from);
 
           try {
             $conn = new PDO($dsn, $username, $password);
@@ -140,7 +142,7 @@ $password = "Lgj231997";
           if(isset($_POST['order_date'])) {
             //$from_date = $_POST['from_date'];
             //$to_date = $_POST['to_date'];
-            $sql_select = "SELECT * FROM registration_tab WHERE reg_date = '20-12-2017'";
+            $sql_select = "SELECT * FROM registration_tab WHERE reg_date = '$fr'";
             $stmt = $conn->prepare($sql_select);
             //$stmt->execute();
             $stmt->execute(array(':reg_date'=>$reg_date.'%'));
