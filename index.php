@@ -119,7 +119,7 @@ $username = "Skaylans";
 $password = "Lgj231997";
 $from='2017-12-20';
 $fr=strtotime($from);
-
+echo "$fr";
           try {
             $conn = new PDO($dsn, $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
