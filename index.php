@@ -13,7 +13,7 @@
             <div>
              <input type ="text" name ="name" id ="name" placeholder ="Введите ваше имя">
              <input type ="text" name ="email" id ="email" placeholder ="Ваш еmail..">
-             <input type ="date" name ="date_on" id ="date_on" placeholder ="Дата">
+             <input type ="date" name ="reg_date" id ="reg_date" placeholder ="Дата">
              <div>
               <input type ="submit" name ="submit"  class ="btn" value ="Отправить">     
               <input type ="submit" name ="clear" class ="btn" id = "clr" value ="Очистить"></pre>
@@ -47,7 +47,7 @@
       $conn = new PDO($dsn, $username, $password);
       $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       if(isset($_POST["clear"])) {
-        $sql1 = "DELETE FROM registration_T1";
+        $sql1 = "DELETE FROM registration_tab";
         $conn->query($sql1);
       }
     }
@@ -80,7 +80,7 @@ $password = "Lgj231997";
           $name   = $_POST['name'];
           $email  = $_POST['email'];
           //$date  = date("D-m-y");
-          $date  = $_POST['date_on'];
+          $reg_date  = $_POST['reg_date'];
           $gender = $_POST['gender'];
           //$age  = $_POST['age'];
           //$country  = $_POST['country'];
@@ -90,11 +90,11 @@ $password = "Lgj231997";
            echo "<h3>Не заполнены поля name и email.</h3>";
           }
           else {
-            $sql_insert ="INSERT INTO registration_T1 (name, email, date, gender) VALUES (?,?,?,?)";
+            $sql_insert ="INSERT INTO registration_tab (name, email, reg_date, gender) VALUES (?,?,?,?)";
             $stmt = $conn->prepare($sql_insert);
             $stmt->bindValue(1, $name);
             $stmt->bindValue(2, $email);
-            $stmt->bindValue(3, $date);
+            $stmt->bindValue(3, $reg_date);
             $stmt->bindValue(4, $gender);
             //$stmt->bindValue(5, $age);
             //$stmt->bindValue(6, $country);
@@ -130,21 +130,21 @@ $password = "Lgj231997";
           }
 
 
-          $sql_select = "SELECT * FROM registration_T1";
+          $sql_select = "SELECT * FROM registration_tab";
           $stmt = $conn->query($sql_select);
           $stmt->execute();
           if(isset($_POST['filter'])) {
             $gender = $_POST['gender'];
-            $sql_select = "SELECT * FROM registration_T1 WHERE gender like :gender";
+            $sql_select = "SELECT * FROM registration_tab WHERE gender like :gender";
             $stmt = $conn->prepare($sql_select);
             $stmt->execute(array(':gender'=>$gender.'%'));
           }
           if(isset($_POST['order_date'])) {
             $from_date = $_POST['from_date'];
             $to_date = $_POST['to_date'];
-            $sql_select = "SELECT * FROM registration_T1 WHERE date_on BETWEEN :from_date AND :to_date";
+            $sql_select = "SELECT * FROM registration_tab WHERE reg_date BETWEEN :from_date AND :to_date";
             $stmt = $conn->query($sql_select);
-            $stmt->execute(array(':date'=>$date.'%'));
+            $stmt->execute(array(':reg_date'=>$reg_date.'%'));
           }
           
           $registrants = $stmt->fetchAll();
@@ -166,7 +166,7 @@ $password = "Lgj231997";
               //echo "<td>".$registrant['age']."</td>";
               //echo "<td>".$registrant['country']."</td>";
               //echo "<td>".$registrant['birthday']."</td>";
-              echo "<td>".$registrant['date']."</td></tr>";
+              echo "<td>".$registrant['reg_date']."</td></tr>";
             }
             echo "</table>";
           }
