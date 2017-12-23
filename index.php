@@ -28,8 +28,8 @@
               <input type="submit" name="filter" class="btn" value="Фильтр">
          </div>
          <div>
-          <input type="date" name="from_date" id="from_date">
-          <input type="date" name="to_date" id="to_date">
+          <input type="text" name="from_date" id="from_date">
+          <input type="text" name="to_date" id="to_date">
          </div>
          <input type="submit" name="order_date" class="btn" value="Отбор">
             </form>
@@ -117,9 +117,7 @@ $password = "Lgj231997";
 $dsn = "sqlsrv:server = tcp:olezhka.database.windows.net,1433; Database = Prime";
 $username = "Skaylans";
 $password = "Lgj231997";
-$from='2017-12-20';
-$fr= date('Y-m-d','2017-12-20');
-echo "$fr";
+
           try {
             $conn = new PDO($dsn, $username, $password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -139,12 +137,11 @@ echo "$fr";
             $stmt = $conn->prepare($sql_select);
             $stmt->execute(array(':gender'=>$gender.'%'));
           }
-          if(isset($_POST['order_date'])) {
+          elseif(isset($_POST['order_date'])) {
             //$from_date = $_POST['from_date'];
             //$to_date = $_POST['to_date'];
-            $sql_select = "SELECT * FROM registration_tab WHERE reg_date != '$fr'";
+            $sql_select = "SELECT * FROM registration_tab WHERE reg_date BETWEEN '".$_POST["from_date"]."' AND '".$_POST["to_date"]."'";
             $stmt = $conn->prepare($sql_select);
-            //$stmt->execute();
             $stmt->execute(array(':reg_date'=>$reg_date.'%'));
           }
           
